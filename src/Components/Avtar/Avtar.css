@@ -1,0 +1,14 @@
+.avtar {
+    vertical-align: middle;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    margin-top: auto;
+  }
+  
+.avtar-container {
+}
+
+/* .avtar-details {
+    margin: 0.7rem;
+} */

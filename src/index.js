@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {BrowserRouter as Router} from "react-router-dom"
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { makeServer } from "./server";
+import { DataContext, DataProvider } from './Context/DataContext';
+import { AuthContext, AuthProvider } from './Context/AuthConetxt';
 
+// Call make Server
+makeServer();
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+export {DataContext, AuthContext};
+
 root.render(
   <React.StrictMode>
+  <Router>
+  <AuthProvider>
+  <DataProvider>
     <App />
+    </DataProvider>
+    </AuthProvider>
+    </Router>
   </React.StrictMode>
 );
 

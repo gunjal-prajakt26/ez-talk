@@ -1,0 +1,35 @@
+.post-container {
+    display:  flex;
+    margin: 2em 1em;
+}
+
+.user-details {
+    line-height: 0px;
+    font-size: 0.8em;
+}
+
+.user-details p{
+    margin-top: 0.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.fullName {
+    font-weight: bold;
+}
+
+.userName{
+    font-weight: 400;
+    color: var(--username-color);
+}
+
+.user-info {
+    display: flex;
+}
+
+.post-date  {
+    font-weight: 500;
+    font-size: 0.7em;
+    margin-top: 0;
+    color: var(--username-color);
+}

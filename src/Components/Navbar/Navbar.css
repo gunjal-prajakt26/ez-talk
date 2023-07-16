@@ -1,0 +1,10 @@
+.navbar-container {
+    margin: 1rem 0px;
+    position: fixed;
+    left: 3em;
+}
+
+.tabs {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
