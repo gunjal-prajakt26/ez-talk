@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
 /**
  * User Database can be added here.
@@ -7,99 +6,106 @@ import { formatDate } from "../utils/authUtils";
 
 export const users = [
   {
-    _id: uuid(),
-    fullName: "Prashant Singh Chauhan",
-    username: "pareshaaaaan",
-    password: "123",
-    bio: "Hey there, Prashant here",
-    website: "https://github.com/percius47",
-    profileAvatar:
-    "https://picsum.photos/id/1012/150",
+    _id: "a4a56f5a-d52e-49cd-b2c2-45461fd79a88",
+    firstName: "Kevin",
+    lastName: "De Bruyne",
+    username: "kevindebruyne",
+    password: "kevindebruyne123",
+    avatar: "https://res.cloudinary.com/ddqytua2y/image/upload/v1686999578/Social-media-app-assets/1482478136_kwvt0w.jpg",
+    header: "https://res.cloudinary.com/ddqytua2y/image/upload/v1688239749/Social-media-app-assets/1080x360_npm5ln.jpg",
+    followers: [],
+    following: [],
+    bookmarks: [],
+    bio: "Professional Footballer at Manchester City.",
+    website: "https://www.mancity.com/players/kevin-de-bruyne",
+    location: "Drongen, Belgium",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    following: [
-      { _id: uuid(), fullName: "John Doe", username: "johndoe",profileAvatar:
-      "https://picsum.photos/id/1009/150" },
-    
-    
-    ],
-    followers: [
-      { _id: uuid(), fullName: "John Doe", username: "johndoe",profileAvatar:
-      "https://picsum.photos/id/1009/150" },
-      { _id: uuid(), fullName: "Aditya Jadhav", username: "aditya_jadhav",profileAvatar:
-      "https://picsum.photos/id/100/150" },
-      { _id: uuid(), fullName: "Anshaal Khanna", username: "anshaal10",profileAvatar:
-      "https://picsum.photos/id/1005/150" },
-    ],
   },
   {
-    _id: uuid(),
-    fullName: "John Doe",
-    username: "johndoe",
-    password: "123john",
-    bio: "Hey there, John here",
-    website: "https://www.johndoe.com",
-    profileAvatar:
-      "https://picsum.photos/id/1009/150",
-    createdAt: "2022-05-05",
-    updatedAt: formatDate(),
-    following: [
-      { _id: uuid(), fullName: "Prashant Singh Chauhan", username: "pareshaaaaan",profileAvatar:
-      "https://picsum.photos/id/1012/150", },
-      { _id: uuid(), fullName: "Aditya Jadhav", username: "aditya_jadhav",profileAvatar:
-      "https://picsum.photos/id/100/150" },
-    ],
-    followers: [
-      { _id: uuid(), fullName: "Anshaal Khanna", username: "anshaal10",profileAvatar:
-      "https://picsum.photos/id/1005/150" },
-      { _id: uuid(), fullName: "Prashant Singh Chauhan", username: "pareshaaaaan",profileAvatar:
-      "https://picsum.photos/id/1012/150", }
-    ],
-  },
-  {
-    _id: uuid(),
-    fullName: "Anshaal Khanna",
-    username: "anshaal10",
-    password: "anshaal123",
-    bio: "Hey there, Anshaal here",
-    website: "https://www.nike.com",
-    profileAvatar:
-      "https://picsum.photos/id/1005/150",
+    _id: "db8fdf2a-fcb4-479a-9fae-cb150e555ce1",
+    firstName: "Yashwanth",
+    lastName: "A M",
+    username: "yashwantham",
+    password: "yashwantham123",
+    avatar: "https://res.cloudinary.com/ddqytua2y/image/upload/v1688967802/Social-media-app-assets/z61wzw6kvncgthgb8a33.jpg",
+    header: "",
+    followers: [],
+    following: [],
+    bookmarks: [],
+    bio: "Web Developer | 🧑‍💻 | 🏏 ",
+    website: "https://yashwanth-portfolio.netlify.app/",
+    location: "Bengaluru, India",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    following: [
-      { _id: uuid(), fullName: "Prashant Singh Chauhan", username: "pareshaaaaan",profileAvatar:
-      "https://picsum.photos/id/1012/150", },
-      { _id: uuid(), fullName: "John Doe", username: "johndoe",profileAvatar:
-      "https://picsum.photos/id/1009/150" },
-    ],
-    followers: [
-      { _id: uuid(), fullName: "Aditya Jadhav", username: "aditya_jadhav",profileAvatar:
-      "https://picsum.photos/id/100/150" },
-    ],
   },
   {
-    _id: uuid(),
-    fullName: "Aditya Jadhav",
-    username: "aditya_jadhav",
-    password: "jadhav123",
-    bio: "Hello Fritter, Jadhav here!",
-    website: "https://www.wikipedia.com",
-    profileAvatar:
-      "https://picsum.photos/id/100/150",
+    _id: "d309cd5c-dbdd-4b03-a87d-f2b59ea1ffd8",
+    firstName: "Nikhil",
+    lastName: "Kamath",
+    username: "nikhilkamath",
+    password: "nikhilkamath123",
+    avatar: "https://res.cloudinary.com/ddqytua2y/image/upload/v1686999970/Social-media-app-assets/LTrhAhR6_400x400_rlfadf.jpg",
+    header: "",
+    followers: [],
+    following: [],
+    bookmarks: [],
+    bio: "Co-Founder, Zerodha | True Beacon | Gruhas",
+    website: "https://t.co/fW7AxdrTvo",
+    location: "Bengaluru, India",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    following: [
-      { _id: uuid(), fullName: "Prashant Singh Chauhan", username: "pareshaaaaan",profileAvatar:
-      "https://picsum.photos/id/1012/150", },
-      { _id: uuid(), fullName: "Anshaal Khanna", username: "anshaal10",profileAvatar:
-      "https://picsum.photos/id/1005/150" },
-    ],
-    followers: [
-      { _id: uuid(), fullName: "John Doe", username: "johndoe",profileAvatar:
-      "https://picsum.photos/id/1009/150" },
-      { _id: uuid(), fullName: "Anshaal Khanna", username: "anshaal10",profileAvatar:
-      "https://picsum.photos/id/1005/150" },
-    ],
+  },
+ 
+  {
+    _id: "fae96f0a-928a-433e-bdf5-2036429646cc",
+    firstName: "Evelyn",
+    lastName: "Clark",
+    username: "evelynclark",
+    password: "evelynclark123",
+    avatar: "https://res.cloudinary.com/ddqytua2y/image/upload/v1687002020/Social-media-app-assets/341835630_152371267512780_7379959529228480656_n.jpg_rat9uc.jpg",
+    header: "",
+    followers: [],
+    following: [],
+    bookmarks: [],
+    bio: "This is bio",
+    website: "This is website",
+    location: "This is location",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "64d9a619-b9dd-45af-9fbe-e3054ed024ae",
+    firstName: "Kane",
+    lastName: "Williamson",
+    username: "kanewilliamson",
+    password: "kanewilliamson123",
+    avatar: "https://res.cloudinary.com/ddqytua2y/image/upload/v1687001105/Social-media-app-assets/kane_rftngq.jpg",
+    header: "",
+    followers: [],
+    following: [],
+    bookmarks: [],
+    bio: "This is bio",
+    website: "This is website",
+    location: "This is location",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "ed15ba5c-668e-462e-9d23-85d158a42ce5",
+    firstName: "Lily",
+    lastName: "Carter",
+    username: "lilycarter",
+    password: "lilycarter123",
+    avatar: "https://res.cloudinary.com/ddqytua2y/image/upload/v1687001884/Social-media-app-assets/4Z78HHO9_400x400_n4z7nj.jpg",
+    header: "",
+    followers: [],
+    following: [],
+    bookmarks: [],
+    bio: "This is bio",
+    website: "This is website",
+    location: "This is location",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
   },
 ];

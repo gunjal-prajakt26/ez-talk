@@ -9,349 +9,424 @@ import { formatDate } from "../utils/authUtils";
 export const posts = [
   {
     _id: uuid(),
-    content:
-    "Must try of this week: Vada Pao from SK Vadewale in Pune. The taste is absolutely mind-boggling and fresh.",
+    content: "Belief is a beautiful gift!",
+    mediaURL: "",
     likes: {
-      likeCount: 0,
+      likeCount: 5,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "aditya_jadhav",
-    fullName: "Aditya Jadhav",
-    postImage:"https://res.cloudinary.com/dwebygldw/image/upload/v1653066367/frittr/vada-pav_g0u58t.webp",
-    createdAt: "2022-05-01",
-    updatedAt: formatDate(),
-    comments: [
-      {
-        _id: uuid(),
-        comment:
-          "Nice!",
-        fullName: "Anshaal Khanna",
-        username: "anshaal10",
-     
-        profileAvatar:
-        "https://picsum.photos/id/1005/150",
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        comment:
-          "Wow!",
-        fullName: "Prashant Singh Chauhan",
-        username: "pareshaaaaan",
-        profileAvatar:
-    "https://picsum.photos/id/1012/150",
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-    ],
+    comments: [],
+    name: "Yashwanth A M", 
+    username: "yashwantham",
+    createdAt: "2023-06-11T14:13:57+05:30",
+    updatedAt: "2023-06-11T14:13:57+05:30",
   },
   {
     _id: uuid(),
-    content:
-    "Went to this hangout place, Bob's in Marathalli yesterday. The ambience is real good and the mocktails are really fresh.",
+    content: "Sunset from NYC!",
+    mediaURL:
+      "https://res.cloudinary.com/ddqytua2y/image/upload/v1686988311/Social-media-app-assets/nyc_kjcdsh.jpg",
     likes: {
-      likeCount: 0,
+      likeCount: 1,
       likedBy: [],
       dislikedBy: [],
     },
-    
-    username: "pareshaaaaan",
-    fullName: "Prashant Singh Chauhan",
-    createdAt: "2022-05-11",
-    postImage:"https://res.cloudinary.com/dwebygldw/image/upload/v1652908952/frittr/zwpmppawiyxwthsmikyk.webp",
-    updatedAt: formatDate(),
-    comments: [
-      {
-        _id: uuid(),
-        comment:
-          "Nice!",
-        fullName: "Anshaal Khanna",
-        username: "anshaal10",
-        profileAvatar:
-        "https://picsum.photos/id/1005/150",
-        createdAt: "2022-05-11",
-        updatedAt: formatDate(),
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        comment:
-          "Wow!",
-        fullName: "Aditya Jadhav",
-        username: "aditya_jadhav",
-        profileAvatar:
-    "https://picsum.photos/id/100/150",
-        createdAt: "2022-05-12",
-        updatedAt: formatDate(),
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-    ],
+    comments: [],
+    name: "Nikhil Kamath",
+    username: "nikhilkamath",
+    createdAt: "2023-06-14T14:13:57+05:30",
+    updatedAt: "2023-06-14T14:13:57+05:30",
   },
   {
-    _id: uuid(),
+    _id:  uuid(),
     content:
-"Ordered Meghana's Special Chicken Biryani from Meghana's. Recommend 10/10. ✨  "
-      ,
+      "You are never too old to set another goal or to dream a new dream.",
+    mediaURL: "",
+    likes: {
+      likeCount: 5,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Lily Carter",
+    username: "lilycarter",
+    createdAt: "2023-05-29T14:13:57+05:30",
+    updatedAt: "2023-05-29T14:13:57+05:30",
+  },
+  {
+    _id:  uuid(),
+    content: "Yayy! Its my Birthday Today. Made this cake for myself!",
+    mediaURL:
+      "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014336/ecommerce/chocolatecake4.webp",
     likes: {
       likeCount: 2,
-      likedBy: [
-        {
-          _id: uuid(),
-          fullName: "Prashant Singh Chauhan",
-          username: "pareshaaaaan",
-          profileAvatar:
-          "https://picsum.photos/id/1012/150",
-        },
-        {
-          _id: uuid(),
-          fullName: "John Doe",
-          username: "johndoe",
-          profileAvatar:
-          "https://picsum.photos/id/1009/150",
-        },
-      ],
-      dislikedBy: [],
-    },
-    username: "anshaal10",
-    fullName:"Anshaal Khanna",
-postImage:null,
-    comments: [
-      {
-        _id: uuid(),
-        comment:
-          "Nice!",
-        fullName: "Anshaal Khanna",
-        username: "anshaal10",
-        profileAvatar:
-        "https://picsum.photos/id/1005/150",
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        comment:
-          "Wow!",
-        fullName: "Prashant Singh Chauhan",
-        username: "pareshaaaaan",
-        profileAvatar:
-    "https://picsum.photos/id/1012/150",
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-    ],
-    createdAt: "2022-04-20",
-    updatedAt: formatDate(),
-  },
-  {
-    _id: uuid(),
-    content:
-    "Went out for dinner at Chili's Hyderabad. The taste reminds me of back home in Autralia.",
-    likes: {
-      likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
-    postImage:null,
-    username: "anshaal10",
-    fullName: "Anshaal Khanna",
-    createdAt: "2022-05-05",
-    updatedAt: formatDate(),
     comments: [
       {
-        _id: uuid(),
-        comment:
-          "Nice!",
-        fullName: "Anshaal Khanna",
-        username: "anshaal10",
-        profileAvatar:
-        "https://picsum.photos/id/1005/150",
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
+        _id:  uuid(),
+        name: "Nikhil Kamath",
+        username: "nikhilkamath",
+        text: "Happy Birthday! Enjoy your Day!!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
         },
       },
       {
-        _id: uuid(),
-        comment:
-          "Wow!",
-        fullName: "Prashant Singh Chauhan",
-        username: "pareshaaaaan",
-        profileAvatar:
-    "https://picsum.photos/id/1012/150",
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
+        _id:  uuid(),
+        name: "Kane Williamson",
+        username: "kanewilliamson",
+        text: "Wow! Looks Amazzing! Happy Birthday!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
         },
       },
     ],
+    name: "Evelyn Clark",
+    username: "evelynclark",
+    createdAt: "2023-06-09T14:13:57+05:30",
+    updatedAt: "2023-06-09T14:13:57+05:30",
+  },
+  {
+    _id:  uuid(),
+    content:
+      "Life has got all those twists and turns. You’ve got to hold on tight and off you go.",
+    mediaURL: "",
+    likes: {
+      likeCount: 2,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Kane Williamson",
+    username: "kanewilliamson",
+    createdAt: "2023-06-14T14:13:57+05:30",
+    updatedAt: "2023-06-14T14:13:57+05:30",
+  },
+  {
+    _id:  uuid(),
+    content: "Treble Winners!!",
+    mediaURL: "https://res.cloudinary.com/ddqytua2y/image/upload/v1688936832/Social-media-app-assets/lqbvpvqic32ymdegxpnx.jpg",
+    likes: {
+      likeCount: 2,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Kevin De Bruyne",
+    username: "kevindebruyne",
+    createdAt: "2023-06-13T14:13:57+05:30",
+    updatedAt: "2023-06-13T14:13:57+05:30",
+  },
+  {
+    _id:  uuid(),
+    content:
+      "No matter what people tell you, words and ideas can change the world.",
+    mediaURL: "",
+    likes: {
+      likeCount: 2,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Nikhil Kamath",
+    username: "nikhilkamath",
+    createdAt: "2023-06-17T14:13:57+05:30",
+    updatedAt: "2023-06-17T14:13:57+05:30",
   },
   {
     _id: uuid(),
-    content:
-    "Went out for dinner at Chili's Hyderabad. The taste reminds me of back home in Autralia.",
+    content: "Stunning goa.",
+    mediaURL:
+      "https://res.cloudinary.com/ddqytua2y/image/upload/v1686985902/Social-media-app-assets/20220409_165934_vimd3z.jpg",
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
-    postImage:null,
-    username: "johndoe",
-    fullName: "John Doe",
-    createdAt: "2022-05-11",
-    updatedAt: formatDate(),
+    comments: [ {
+      _id: uuid(),
+      name: "Yashwanth A M",
+      username: "yashwantham",
+      text: "That's a cool picture",
+      votes: {
+        upvotedBy: [],
+        downvotedBy: [],
+      },
+    },],
+    name: "Kane Williamson",
+    username: "kanewilliamson",
+    createdAt: "2023-06-12T14:13:57+05:30",
+    updatedAt: "2023-06-12T14:13:57+05:30",
+  },
+  {
+    _id:  uuid(),
+    content: "When you have a dream, you’ve got to grab it and never let go. ",
+    mediaURL:
+      "",
+    likes: {
+      likeCount: 10,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Lily Carter",
+    username: "lilycarter",
+    createdAt: "2023-06-22T14:13:57+05:30",
+    updatedAt: "2023-06-22T14:13:57+05:30",
+  },
+  {
+    _id:  uuid(),
+    content:
+      "Cubbon Park mornings",
+    mediaURL: "https://res.cloudinary.com/ddqytua2y/image/upload/v1686988952/Social-media-app-assets/FyTeekAWAAATvzf_kpq6xn.jpg",
+    likes: {
+      likeCount: 1,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Evelyn Clark",
+    username: "evelynclark",
+    createdAt: "2023-06-20T14:13:57+05:30",
+    updatedAt: "2023-06-20T14:13:57+05:30",
+  },
+  {
+    _id:  uuid(),
+    content: "Believe in yourself! Rest all will fall in place.",
+    mediaURL: "",
+    likes: {
+      likeCount: 2,
+      likedBy: [],
+      dislikedBy: [],
+    },
     comments: [
       {
-        _id: uuid(),
-        comment:
-          "Nice!",
-        fullName: "Anshaal Khanna",
-        username: "anshaal10",
-        profileAvatar:
-        "https://picsum.photos/id/1005/150",
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        comment:
-          "Wow!",
-        fullName: "Prashant Singh Chauhan",
-        username: "pareshaaaaan",
-        profileAvatar:
-    "https://picsum.photos/id/1012/150",
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
+        _id:  uuid(),
+        name: "Nikhil Kamath",
+        username: "nikhilkamath",
+        text: "So True!!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
         },
       },
     ],
+    name: "Yashwanth A M",
+    username: "yashwantham",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
   },
+  {
+    _id:  uuid(),
+    content:
+      "You can get everything in life you want if you will just help enough other people get what they want.",
+    mediaURL: "",
+    likes: {
+      likeCount: 5,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Kane Williamson",
+    username: "kanewilliamson",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
+  },
+
+  {
+    _id:  uuid(),
+    content:
+      "If you believe something needs to exist, if it's something you want to use yourself, don't let anyone ever stop you from doing it.",
+    mediaURL: "",
+    likes: {
+      likeCount: 5,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Nikhil Kamath",
+    username: "nikhilkamath",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
+  },
+
+  {
+    _id:  uuid(),
+    content: "More is lost by indecision than wrong decision.",
+    mediaURL: "",
+    likes: {
+      likeCount: 5,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Evelyn Clark",
+    username: "evelynclark",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
+  },
+
+  {
+    _id:  uuid(),
+    content:
+      "The reason we struggle with insecurity is because we compare our behind-the-scenes with everyone else’s highlight reel.",
+    mediaURL: "",
+    likes: {
+      likeCount: 7,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Evelyn Clark",
+    username: "evelynclark",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
+  },
+
+  {
+    _id:  uuid(),
+    content: "If you don’t risk anything, you risk even more.",
+    mediaURL: "",
+    likes: {
+      likeCount: 6,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Nikhil Kamath",
+    username: "nikhilkamath",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
+  },
+
+  {
+    _id:  uuid(),
+    content: "What a match we just had here at Lord's! Some scenes.",
+    mediaURL: "https://res.cloudinary.com/ddqytua2y/image/upload/v1686983765/Social-media-app-assets/u5gsmi6bbvh71_jvjlri.jpg",
+    likes: {
+      likeCount: 12,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [{
+      _id:  uuid(),
+      name: "Nikhil Kamath",
+      username: "nikhilkamath",
+      text: "an absolute treat for cricket fans.",
+      votes: {
+        upvotedBy: [],
+        downvotedBy: [],
+      },
+    }],
+    name: "Yashwanth A M",
+    username: "yashwantham",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
+  },
+
   {
     _id: uuid(),
     content:
-    "Nairobi is such a great city with so many people going about their business. One thing that you need to know while there are the places where to find great food/meals. Best recommendation is @al_yusra Restaurant located along Banda Street just next to Nation Centre. #Kenya",
+      "I learned a long time ago that there is something worse than missing the goal, and that’s not pulling the trigger.",
+    mediaURL: "",
     likes: {
-      likeCount: 0,
+      likeCount: 9,
       likedBy: [],
-      dislikedBy: []
+      dislikedBy: [],
     },
-    username: "johndoe",
-    fullName: "John Doe",
-    createdAt: "2022-05-09",
-    postImage:"https://res.cloudinary.com/dwebygldw/image/upload/v1653066477/frittr/E-HqxXdWUAM0z-U_a44utb.jpg",
-    updatedAt: formatDate(),
-    comments: [
-      {
-        _id: uuid(),
-        comment:
-          "Nice!",
-        fullName: "Anshaal Khanna",
-        username: "anshaal10",
-        profileAvatar:
-        "https://picsum.photos/id/1005/150",
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        comment:
-          "Wow!",
-        fullName: "Prashant Singh Chauhan",
-        username: "pareshaaaaan",
-        profileAvatar:
-    "https://picsum.photos/id/1012/150",
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-    ],
+    comments: [],
+    name: "Kevin De Bruyne",
+    username: "kevindebruyne",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
   },
+
   {
-    _id: uuid(),
+    _id:  uuid(),
     content:
-    "I met this street food seller in Gyeongju on a recommendation from a dating app. This man was adopted and grew up in US. He moved to Korea to find his birth mother. And he did! I often think back to our conversation #MondayMotivation",
+      "Success is stumbling from failure to failure with no loss of enthusiasm. Love this quote by Winston Churchill.",
+    mediaURL: "",
     likes: {
-      likeCount: 0,
+      likeCount: 12,
       likedBy: [],
-      dislikedBy: []
+      dislikedBy: [],
     },
-    username: "johndoe",
-    fullName: "John Doe",
-    postImage:"https://res.cloudinary.com/dwebygldw/image/upload/v1653067279/frittr/E7OX3WgXoAEu0gR_z9x7zu.jpg",
-    createdAt: "2022-05-01",
-    updatedAt: formatDate(),
-    comments: [
-      {
-        _id: uuid(),
-        comment:
-          "Nice!",
-        fullName: "Anshaal Khanna",
-        username: "anshaal10",
-        profileAvatar:
-        "https://picsum.photos/id/1005/150",
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        comment:
-          "Wow!",
-        fullName: "Prashant Singh Chauhan",
-        username: "pareshaaaaan",
-        profileAvatar:
-    "https://picsum.photos/id/1012/150",
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-    ],
+    comments: [],
+    name: "Lily Carter",
+    username: "lilycarter",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
+  },
+
+  {
+    _id:  uuid(),
+    content:
+      "Optimism is the faith that leads to achievement. Nothing can be done without hope and confidence.",
+    mediaURL: "",
+    likes: {
+      likeCount: 8,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Kane Williamson",
+    username: "kanewilliamson",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
+  },
+
+  {
+    _id:  uuid(),
+    content:
+      "Life is like riding a bicycle. To keep your balance you must keep moving.",
+    mediaURL: "",
+    likes: {
+      likeCount: 5,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Evelyn Clark",
+    username: "evelynclark",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
+  },
+
+  {
+    _id:  uuid(),
+    content:
+      "“Do not wait for the perfect time and place to enter, for you are already onstage.",
+    mediaURL: "",
+    likes: {
+      likeCount: 25,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Nikhil Kamath",
+    username: "nikhilkamath",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
+  },
+
+  {
+    _id:  uuid(),
+    content: "It is a rough road that leads to the heights of greatness.",
+    mediaURL: "",
+    likes: {
+      likeCount: 8,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    name: "Kevin De Bruyne",
+    username: "kevindebruyne",
+    createdAt: "2023-06-19T14:13:57+05:30",
+    updatedAt: "2023-06-19T14:13:57+05:30",
   },
 ];

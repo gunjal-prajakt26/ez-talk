@@ -1,0 +1,6 @@
+.suggestion-container {
+    position: fixed;
+    top: 6em;
+    right: 2em;
+    /* z-index: -1; */
+}

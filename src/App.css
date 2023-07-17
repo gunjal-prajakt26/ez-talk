@@ -2,8 +2,8 @@
 
 
 :root {
-  --primary-color: #1976D2;
-  --secondary-color: #2196F3;
+  --primary-color: #0277BD;
+  --secondary-color: #03A9F4;
   /* --border-gray: #7c878f; */
   --verylight-blue: #BBDEFB;
   --like-color: #F91880;
@@ -53,6 +53,7 @@
 }
 
 .app-body {
+  position: relative;
   display: flex;
   justify-content: space-evenly;
   margin-top: 6em;
@@ -62,5 +63,7 @@ div:nth-of-type(2) {flex-grow: 2;}
 div:nth-of-type(3) {flex-grow: 1;}
 
 .app-content {
-  margin-left: 15em;
+  width: 100px;
+  margin-left: 12em;
+  margin-right: 18em
 }

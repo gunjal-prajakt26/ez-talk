@@ -7,4 +7,30 @@
 .tabs {
     font-size: 1.3rem;
     font-weight: 500;
+    padding: 0.2em;
+
+}
+
+.tabs:hover {
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline  ;
+}
+
+.post-btn {
+    text-align: left;
+    display: block;
+    border-radius: 5px;
+    padding: 0.2em;
+    font-size: 1.3rem;
+    font-weight: 500;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.post-btn:hover{
+    font-weight: bold;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    /* transition: 0.7s; */
 }
