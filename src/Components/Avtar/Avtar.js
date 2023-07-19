@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { DataContext } from "../../Context/DataContext";
 import "./Avtar.css";
 
-export function Avtar({postUsername, fullName}){
+export function Avtar({postUsername}){
 
     const {data:{users}, setData}= useContext(DataContext);
     // const {_id,content,likes,username,fullName,postImage,createdAt,updatedAt,comments}=post;

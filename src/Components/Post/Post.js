@@ -29,7 +29,7 @@ export function Post({ post }) {
 
   return (
     <div className="post-container">
-      <Avtar postUsername={username} fullName={name} />
+      <Avtar postUsername={username}/>
       <div className="post-content">
         <div className="post-user-data">
           <div className="user-info">

@@ -1,27 +1,55 @@
 .home-page {
-    margin: 0 1rem;
-    padding: 1rem;
+  margin: 0 1rem;
+  padding: 1rem;
 }
 .filter-container {
-    display: flex;
-    justify-content: space-evenly;    
-    border-bottom: 1px solid;
-    margin-top: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid;
+  margin-top: 1rem;
 }
 
 .filter-container p {
-    margin-bottom: 0;
-    font-size:1.2em;
-    font-weight: 500;
-    
+  margin-bottom: 0;
+  font-size: 1.2em;
+  font-weight: 500;
 }
 
 .home-title {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
-.filter-container p:hover{
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: underline  ;
+.filter-container p:hover {
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 4s linear infinite;
+  margin: 10em auto;
+}
+
+.post-input {
+}
+
+.input-text {
+  width: 95%;
+  border-bottom: 1px solid;
+  margin: auto 1em;
+  border: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

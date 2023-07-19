@@ -25,16 +25,20 @@ const dispatch=(state, action)=>{
 
 export function DataProvider({children}){
   const initialValue= {allPosts:[], users:[]}
-    const [data, setData]= useReducer(dispatch,initialValue);
+  const [isLoad, setIsLoad]= useState(false);
+  const [isError, setIsError]= useState(false);
+  const [data, setData]= useReducer(dispatch,initialValue);
 
       useEffect(() => {
+        setIsLoad(true);
         (async () => {
             try {
               const dataResponse= await fetch("/api/posts");
               const list=await dataResponse.json();
               setData({type:"SET_POSTS",payload:list.posts});
-              
+              setIsLoad(false);
             } catch (error) {
+              setIsLoad(false)
               console.error(error)
             }
           })();
@@ -53,7 +57,7 @@ export function DataProvider({children}){
       
     return (
         <>
-            <DataContext.Provider value={{data, setData}}>
+            <DataContext.Provider value={{data, setData, isLoad, isError}}>
                 {children}
             </DataContext.Provider>
         </>

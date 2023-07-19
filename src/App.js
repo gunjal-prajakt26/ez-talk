@@ -7,6 +7,8 @@ import { Navbar } from "./Components/Navbar/Navbar";
 import { Home } from "./Pages/Home/Home";
 import { Bookmarks } from "./Pages/Bookmarks";
 import { SearchPage } from "./Pages/Suggestion/SearchPage";
+import { Explore } from "./Pages/Explore/Explore";
+import { Profile } from "./Pages/Profile/Profile";
 
 function App() {
   return (
@@ -20,10 +22,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/bookmarks" element={<Bookmarks />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
         <SearchPage />
-      </div>
+      </div> 
     </div>
   );
 }
