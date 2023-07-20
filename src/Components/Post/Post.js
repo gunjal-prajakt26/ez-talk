@@ -29,7 +29,7 @@ export function Post({ post }) {
 
   return (
     <div className="post-container">
-      <Avtar postUsername={username}/>
+      <Avtar postUsername={username} />
       <div className="post-content">
         <div className="post-user-data">
           <div className="user-info">
@@ -59,18 +59,22 @@ export function Post({ post }) {
           {post?.mediaURL && <img className="post-img" src={mediaURL} />}
         </div>
         <div className="icon-container">
-          <span className="post-icons">
-            <i class="bi bi-heart"></i>
-          </span>
-          <span className="post-icons">
-            <i class="bi bi-chat-left"></i>
-          </span>
-          <span className="post-icons">
-            <i class="bi bi-share"></i>
-          </span>
-          <span className="post-icons">
-            <i class="bi bi-bookmark"></i>
-          </span>
+          <p className="icon-list">
+            <i class="post-icons bi bi-heart"></i>{" "}
+            <span className="counts">{likes.likeCount}</span>
+          </p>
+          <p className="icon-list">
+            <i class="post-icons bi bi-chat-left"></i>{" "}
+            <span className="counts">
+              {comments.length ? comments.length : ""}
+            </span>
+          </p>
+          <p className="icon-list">
+            <i class="post-icons bi bi-share"></i>
+          </p>
+          <p className="icon-list">
+            <i class="post-icons bi bi-bookmark"></i>
+          </p>
         </div>
       </div>
     </div>

@@ -10,9 +10,24 @@
 }
 
 .filter-container p {
-  margin-bottom: 0;
+  margin-bottom: 0.1em;
   font-size: 1.2em;
   font-weight: 500;
+}
+
+.filter-container p::after {
+    content: "";
+    display: block;
+    height: 3px;
+     background-color: var(--primary-color);
+     transform: scaleX(0);
+     transform-origin: left;
+     transition: transform 0.3s ease;
+}
+
+.filter-container p:hover::after{
+    transform: scaleX(1);
+  cursor: pointer;
 }
 
 .home-title {
@@ -20,9 +35,7 @@
 }
 
 .filter-container p:hover {
-  font-weight: bold;
   cursor: pointer;
-  text-decoration: underline;
 }
 
 .loader {
@@ -35,14 +48,33 @@
   margin: 10em auto;
 }
 
-.post-input {
-}
 
 .input-text {
   width: 95%;
   border-bottom: 1px solid;
   margin: auto 1em;
   border: none;
+}
+
+.post-operations {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin:1em 1em auto 1em;
+    border-top: 1px solid black;
+    padding: 1em;
+    color: var(--primary-color);
+}
+
+.btn-post{
+    text-align: left;
+    border: none;
+    border-radius: 5px;
+    padding: 0.2em 0.5em;
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: var(--primary-color);
+    color: white;
 }
 
 @keyframes spin {

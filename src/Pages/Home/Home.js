@@ -29,10 +29,13 @@ export function Home() {
         <div class="post-content">
           <textarea
             class="form-control input-text"
-            id="exampleFormControlTextarea1"
-            rows="3"
+            rows="1"
             placeholder="Write new post..."
           ></textarea>
+          <div className="post-operations">
+          <span className="post-icons"><i class="bi bi-card-image"></i></span>
+          <button className="btn-post">Post</button>
+          </div>
         </div>
     </div>
       <div>

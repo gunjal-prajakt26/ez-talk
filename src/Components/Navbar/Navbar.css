@@ -1,5 +1,7 @@
 .navbar-container {
-    margin: 1rem 0px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
     position: fixed;
     left: 3em;
 }
@@ -8,6 +10,7 @@
     font-size: 1.3rem;
     font-weight: 500;
     padding: 0.2em;
+    margin-top: 0.7em;
 }
 
 .link {
@@ -15,10 +18,23 @@
     color: black;
 }
 
+.link::after {
+    content: "";
+    display: block;
+    height: 3px;
+     background-color: var(--primary-color);
+     transform: scaleX(0);
+     transform-origin: left;
+     transition: transform 0.3s ease;
+}
+
+.link:hover::after{
+    transform: scaleX(1);
+}
+
 .tabs:hover {
     font-weight: bold;
     cursor: pointer;
-    text-decoration: underline  ;
 }
 .post-btn {
     text-align: left;
@@ -29,11 +45,13 @@
     font-weight: 500;
     background-color: var(--primary-color);
     color: white;
+    margin-top: 0.7em;
 }
 
-.post-btn:hover{
+.post-btn :hover, .btn-post:hover{
     font-weight: bold;
     cursor: pointer;
     background-color: var(--primary-color);
     /* transition: 0.7s; */
 }
+
