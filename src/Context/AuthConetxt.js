@@ -89,10 +89,9 @@ export function AuthProvider({ children }) {
     loginUser();
   },[])
 
-  console.log(token);
   return (
     <>
-      <AuthContext.Provider value={{ token, user }}>
+      <AuthContext.Provider value={{ token, user,setUser }}>
         {children}
       </AuthContext.Provider>
     </>

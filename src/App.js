@@ -23,7 +23,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/bookmarks" element={<Bookmarks />} />
             <Route path="/explore" element={<Explore />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="profile/:id" element={<Profile />} />
           </Routes>
         </div>
         <SearchPage />

@@ -55,3 +55,10 @@
     /* transition: 0.7s; */
 }
 
+.new-post {
+    background-color: white;
+}
+
+.modal-content {
+    background-color: transparent;
+}

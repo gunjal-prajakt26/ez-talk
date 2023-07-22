@@ -11,7 +11,6 @@ export function Header() {
     isLoad,
     isError,
   } = useContext(DataContext);
-  console.log(input);
 
   const searchUsers = input
     ? users.filter(

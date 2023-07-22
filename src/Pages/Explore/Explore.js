@@ -24,22 +24,22 @@ export function Explore() {
       <div className="home-page">
         <h1 className="home-title">Explore</h1>
         <div className="filter-container">
-          <p
-            style={{
-              color: filter === "Trending" ? "var(--primary-color)" : "black",
-            }}
-            onClick={() => setData({ type: "SET_FILTER", payload: "Trending" })}
-          >
-            Trending
-          </p>
-          <p
-            style={{
-              color: filter === "Latest" ? "var(--primary-color)" : "black",
-            }}
-            onClick={() => setData({ type: "SET_FILTER", payload: "Latest" })}
-          >
-            Latest Posts
-          </p>
+        <p
+          style={{
+            fontWeight: filter === "Trending" ? "bold" : "",
+          }}
+          onClick={() => setData({ type: "SET_FILTER", payload: "Trending" })}
+        >
+          Trending
+        </p>
+        <p
+          style={{
+            fontWeight: filter === "Latest" ? "bold" : "",
+          }}
+          onClick={() => setData({ type: "SET_FILTER", payload: "Latest" })}
+        >
+          Latest Posts
+        </p>
         </div>
         <div>
           {isLoad ? (

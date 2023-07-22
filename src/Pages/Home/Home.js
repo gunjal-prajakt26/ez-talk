@@ -30,7 +30,7 @@ export function Home() {
       <div className="filter-container">
         <p
           style={{
-            color: filter === "Trending" ? "var(--primary-color)" : "black",
+            fontWeight: filter === "Trending" ? "bold" : "",
           }}
           onClick={() => setData({ type: "SET_FILTER", payload: "Trending" })}
         >
@@ -38,7 +38,7 @@ export function Home() {
         </p>
         <p
           style={{
-            color: filter === "Latest" ? "var(--primary-color)" : "black",
+            fontWeight: filter === "Latest" ? "bold" : "",
           }}
           onClick={() => setData({ type: "SET_FILTER", payload: "Latest" })}
         >

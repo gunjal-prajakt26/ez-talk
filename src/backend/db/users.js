@@ -1,6 +1,5 @@
-import { formatDate } from "../utils/authUtils";
 import { v4 as uuid } from "uuid";
-
+import { formatDate } from "../utils/authUtils";
 /**
  * User Database can be added here.
  * You can add default users of your wish with different attributes
@@ -15,8 +14,8 @@ export const users = [
     password: "kevindebruyne123",
     avatar: "https://res.cloudinary.com/ddqytua2y/image/upload/v1686999578/Social-media-app-assets/1482478136_kwvt0w.jpg",
     header: "https://res.cloudinary.com/ddqytua2y/image/upload/v1688239749/Social-media-app-assets/1080x360_npm5ln.jpg",
-    followers: [],
-    following: [],
+    // followers: [],
+    // following: [],
     bookmarks: [],
     bio: "Professional Footballer at Manchester City.",
     website: "https://www.mancity.com/players/kevin-de-bruyne",
@@ -32,8 +31,8 @@ export const users = [
     password: "yashwantham123",
     avatar: "https://res.cloudinary.com/ddqytua2y/image/upload/v1688967802/Social-media-app-assets/z61wzw6kvncgthgb8a33.jpg",
     header: "",
-    followers: [],
-    following: [],
+    // followers: [],
+    // following: [],
     bookmarks: [],
     bio: "Web Developer | 🧑‍💻 | 🏏 ",
     website: "https://yashwanth-portfolio.netlify.app/",
@@ -49,8 +48,8 @@ export const users = [
     password: "nikhilkamath123",
     avatar: "https://res.cloudinary.com/ddqytua2y/image/upload/v1686999970/Social-media-app-assets/LTrhAhR6_400x400_rlfadf.jpg",
     header: "",
-    followers: [],
-    following: [],
+    // followers: [],
+    // following: [],
     bookmarks: [],
     bio: "Co-Founder, Zerodha | True Beacon | Gruhas",
     website: "https://t.co/fW7AxdrTvo",
@@ -67,8 +66,8 @@ export const users = [
     password: "evelynclark123",
     avatar: "https://res.cloudinary.com/ddqytua2y/image/upload/v1687002020/Social-media-app-assets/341835630_152371267512780_7379959529228480656_n.jpg_rat9uc.jpg",
     header: "",
-    followers: [],
-    following: [],
+    // followers: [],
+    // following: [],
     bookmarks: [],
     bio: "This is bio",
     website: "This is website",
@@ -84,8 +83,8 @@ export const users = [
     password: "kanewilliamson123",
     avatar: "https://res.cloudinary.com/ddqytua2y/image/upload/v1687001105/Social-media-app-assets/kane_rftngq.jpg",
     header: "",
-    followers: [],
-    following: [],
+    // followers: [],
+    // following: [],
     bookmarks: [],
     bio: "This is bio",
     website: "This is website",
@@ -101,8 +100,8 @@ export const users = [
     password: "lilycarter123",
     avatar: "https://res.cloudinary.com/ddqytua2y/image/upload/v1687001884/Social-media-app-assets/4Z78HHO9_400x400_n4z7nj.jpg",
     header: "",
-    followers: [],
-    following: [],
+    // followers: [],
+    // following: [],
     bookmarks: [],
     bio: "This is bio",
     website: "This is website",

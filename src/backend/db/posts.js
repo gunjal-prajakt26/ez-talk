@@ -7,6 +7,7 @@ import { formatDate } from "../utils/authUtils";
  * */
 
 export const posts = [
+  
   {
     _id: uuid(),
     content: "Belief is a beautiful gift!",

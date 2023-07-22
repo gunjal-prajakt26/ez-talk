@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { Avtar } from "../Avtar/Avtar";
 import "./SuggestionCard.css";
 
@@ -22,10 +23,17 @@ export function SuggestionCard({ user }) {
   return (
     <div>
       <div class="suggestion-user-conatiner">
-        <img class="avtar" src={avatar} />{" "}
+        <NavLink className="username-link" to={`/profile/${user._id}`}>
+          {" "}
+          <img class="avtar" src={avatar} />{" "}
+        </NavLink>
         <div className="suggestion-user-deatils">
-          <p className="fullName"> {firstName + " " + lastName} </p>{" "}
-          <p className="userName"> @ {username} </p>{" "}
+          <NavLink className="username-link" to={`/profile/${user._id}`}>
+            <p className="fullName"> {firstName + " " + lastName} </p>{" "}
+          </NavLink>
+          <NavLink className="username-link" to={`/profile/${user._id}`}>
+            <p className="userName"> @ {username} </p>{" "}
+          </NavLink>
         </div>{" "}
         <button className="btn-follow">Follow</button>
       </div>{" "}

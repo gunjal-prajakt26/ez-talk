@@ -1,18 +1,21 @@
 import { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { Post } from "../../Components/Post/Post";
 import { AuthContext } from "../../Context/AuthConetxt";
 import { DataContext } from "../../Context/DataContext";
 import "./Profile.css";
 
 export function Profile() {
+  const {id}= useParams();
   const {
-    data: { allPosts },
+    data: { allPosts, users },
     setData,
     isLoad,
     isError,
   } = useContext(DataContext);
   const { user, token } = useContext(AuthContext);
 
+  const getUser= users.find((obj)=>obj._id === id);
   const {
     _id,
     firstName,
@@ -29,11 +32,11 @@ export function Profile() {
     location,
     createdAt,
     updatedAt,
-  } = user;
+  } = getUser;
 
   const postCount= allPosts.filter((obj)=>obj.username === username).length;
   const getPosts = allPosts.filter(
-    ({ username }) => username === user.username
+    ({ username }) => username === getUser.username
   );
 
   const getJoinDate = (dt) => {
@@ -53,7 +56,9 @@ export function Profile() {
             <p className="profile-title">{firstName + " " + lastName}</p>
             <p className="post-count">{postCount} posts</p>
             </div>
-          <div class="dropdown-profile-container">
+          {
+            getUser.username === user.username
+            ?<div class="dropdown-profile-container">
             <span
               class="dropdown-icon"
               type="span"
@@ -64,9 +69,13 @@ export function Profile() {
             </span>
             <ul class="dropdown-menu">
               <li className="dropdown-item">Edit</li>
-              <li className="dropdown-item">Delete</li>
+              <li className="dropdown-item">Logout</li>
             </ul>
           </div>
+            :<div class="dropdown-profile-container">
+            <button>Follow</button>
+          </div>
+          }
         </div>
         <img className="header-img" src={header ? header :"https://media.istockphoto.com/id/1040250650/photo/white-studio-background.jpg?b=1&s=612x612&w=0&k=20&c=s8OzauvZiYTcWi57nFXVe7oYWJ7Ul0IMN0MNIySkc1M="} />
         <img className="avatar-img" src={avatar ? avatar : "https://media.istockphoto.com/id/1223671392/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?s=612x612&w=0&k=20&c=s0aTdmT5aU6b8ot7VKm11DeID6NctRCpB755rA1BIP0="} />

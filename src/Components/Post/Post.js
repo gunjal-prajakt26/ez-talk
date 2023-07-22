@@ -2,12 +2,15 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthConetxt";
 import { DataContext } from "../../Context/DataContext";
 import { addToBookmark } from "../../utils/BookMarkService";
+import { deletePost } from "../../utils/editDeletePost";
+import { follow, isFollowing, unfollow } from "../../utils/followUnfollow";
 import { Avtar } from "../Avtar/Avtar";
+import { NewPostModal } from "../PostModal/NewPostModal";
 import "./Post.css";
 
 export function Post({ post }) {
-  const { data, setData, addToBookmark, removeFromBookmark,likePost,dislikePost } = useContext(DataContext);
-  const { user, token } = useContext(AuthContext);
+  const { data:{users}, setData, addToBookmark, removeFromBookmark,likePost,dislikePost } = useContext(DataContext);
+  const { user, token, setUser } = useContext(AuthContext);
   const {
     _id,
     content,
@@ -44,6 +47,10 @@ const likeHandler=()=>{
   likePost(post._id, token)
 }
 
+const id= users.filter(
+  ({ username }) => username === post.username
+);
+
   return (
     <div className="post-container">
       <Avtar postUsername={username} />
@@ -56,8 +63,9 @@ const likeHandler=()=>{
             </div>
             <p className="post-date">·{getPostedTime()}</p>
           </div>
-          <div class="dropdown-container">
-            <span
+          { username=== user.username
+            ?(<div class="dropdown-container">
+          <span
               class="dropdown-icon"
               type="span"
               data-bs-toggle="dropdown"
@@ -65,11 +73,31 @@ const likeHandler=()=>{
             >
               <i class="bi bi-three-dots"></i>
             </span>
-            <ul class="dropdown-menu">
-              <li className="dropdown-item">Edit</li>
-              <li className="dropdown-item">Delete</li>
+           <ul class="dropdown-menu">
+              <li className="dropdown-item" data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            type="li">Edit</li>
+              <li className="dropdown-item" onClick={()=>deletePost(token, post._id, setData)}>Delete</li>
             </ul>
-          </div>
+          </div>)
+          :(<div class="dropdown-container">
+          <span
+              class="dropdown-icon"
+              type="span"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-three-dots"></i>
+            </span>
+           <ul class="dropdown-menu">
+           {
+            isFollowing(id, user)
+            ?<li className="dropdown-item" onClick={()=>unfollow(id, token, setData, setUser)}>Unfollow</li>
+            :<li className="dropdown-item" onClick={()=>follow(id, token, setData, setUser)}>Follow</li>
+           }
+            </ul>
+          </div>)
+            }
         </div>
         <div className="post-data">
           <p className="content">{post?.content}</p>
@@ -93,6 +121,15 @@ const likeHandler=()=>{
             <i class="post-icons bi bi-bookmark-fill" style={{color:isPostBookmarked ?"black":"white"}}></i>
           </p>
         </div>
+      </div>
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+      <NewPostModal user={user}/>
       </div>
     </div>
   );
