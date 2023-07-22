@@ -16,7 +16,7 @@ export function Navbar() {
         <NavLink className="tabs link" to="/explore" style={({ isActive }) => (isActive ? activeStyle : undefined)}>
               <i class="bi bi-rocket-takeoff"> </i>Explorer
         </NavLink>
-        <NavLink className="tabs link" to="/bookmark" style={({ isActive }) => (isActive ? activeStyle : undefined)}>
+        <NavLink className="tabs link" to="/bookmarks" style={({ isActive }) => (isActive ? activeStyle : undefined)}>
               <i class="bi bi-bookmark"> </i>Bookmarks
         </NavLink>
         <NavLink className="tabs link" to="/profile" style={({ isActive }) => (isActive ? activeStyle : undefined)}>

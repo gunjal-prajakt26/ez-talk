@@ -12,12 +12,11 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(localStorageUser?.user);
 
   const loginUser = async () => {
-    const creds = {
-      username: "yashwantham",
-      password: "yashwantham123",
-    };
     try {
-      const {data:{foundUser, encodedToken}, status} = await axios.post("/api/auth/login", creds)
+      const {data:{foundUser, encodedToken}, status} = await axios.post("/api/auth/login",{
+        username: "kevindebruyne",
+    password: "kevindebruyne123",
+      })
       if (status === 200) {
       localStorage.setItem("token", JSON.stringify({ token: encodedToken }));
       setToken(encodedToken);
@@ -89,6 +88,8 @@ export function AuthProvider({ children }) {
     // signupAuthUser(abc);
     loginUser();
   },[])
+
+  console.log(token);
   return (
     <>
       <AuthContext.Provider value={{ token, user }}>

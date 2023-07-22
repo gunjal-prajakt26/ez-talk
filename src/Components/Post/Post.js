@@ -1,10 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Context/AuthConetxt";
 import { DataContext } from "../../Context/DataContext";
+import { addToBookmark } from "../../utils/BookMarkService";
 import { Avtar } from "../Avtar/Avtar";
 import "./Post.css";
 
 export function Post({ post }) {
-  const { data, setData } = useContext(DataContext);
+  const { data, setData, addToBookmark, removeFromBookmark,likePost,dislikePost } = useContext(DataContext);
+  const { user, token } = useContext(AuthContext);
   const {
     _id,
     content,
@@ -26,6 +29,20 @@ export function Post({ post }) {
     }
     return formattedDate;
   };
+
+ const isPostBookmarked = (id, allPosts) => {
+    return allPosts.bookmarks.find((_id) => _id === id ) ? true : false;
+}
+
+const bookmarkHandler=()=>{
+  isPostBookmarked
+  ?removeFromBookmark(post._id)
+  :addToBookmark(post._id, token)
+}
+
+const likeHandler=()=>{
+  likePost(post._id, token)
+}
 
   return (
     <div className="post-container">
@@ -60,7 +77,7 @@ export function Post({ post }) {
         </div>
         <div className="icon-container">
           <p className="icon-list">
-            <i class="post-icons bi bi-heart"></i>{" "}
+            <i class="post-icons bi bi-heart" onClick={()=>likeHandler()}></i>{" "}
             <span className="counts">{likes.likeCount}</span>
           </p>
           <p className="icon-list">
@@ -72,8 +89,8 @@ export function Post({ post }) {
           <p className="icon-list">
             <i class="post-icons bi bi-share"></i>
           </p>
-          <p className="icon-list">
-            <i class="post-icons bi bi-bookmark"></i>
+          <p className="icon-list" onClick={()=>bookmarkHandler()}>
+            <i class="post-icons bi bi-bookmark-fill" style={{color:isPostBookmarked ?"black":"white"}}></i>
           </p>
         </div>
       </div>

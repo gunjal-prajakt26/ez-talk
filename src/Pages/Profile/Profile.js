@@ -68,8 +68,8 @@ export function Profile() {
             </ul>
           </div>
         </div>
-        <img className="header-img" src={header.length? header :"https://media.istockphoto.com/id/1040250650/photo/white-studio-background.jpg?b=1&s=612x612&w=0&k=20&c=s8OzauvZiYTcWi57nFXVe7oYWJ7Ul0IMN0MNIySkc1M="} />
-        <img className="avatar-img" src={avatar.length? avatar : "https://media.istockphoto.com/id/1223671392/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?s=612x612&w=0&k=20&c=s0aTdmT5aU6b8ot7VKm11DeID6NctRCpB755rA1BIP0="} />
+        <img className="header-img" src={header ? header :"https://media.istockphoto.com/id/1040250650/photo/white-studio-background.jpg?b=1&s=612x612&w=0&k=20&c=s8OzauvZiYTcWi57nFXVe7oYWJ7Ul0IMN0MNIySkc1M="} />
+        <img className="avatar-img" src={avatar ? avatar : "https://media.istockphoto.com/id/1223671392/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?s=612x612&w=0&k=20&c=s0aTdmT5aU6b8ot7VKm11DeID6NctRCpB755rA1BIP0="} />
         <div className="profile-data">
           <div className="profile-user-details">
             <p className="fullName profile-name">{firstName + " " + lastName}</p>

@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { Header } from "./Components/Header/Header";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { Home } from "./Pages/Home/Home";
-import { Bookmarks } from "./Pages/Bookmarks";
+import { Bookmarks } from "./Pages/Bookmark/Bookmarks";
 import { SearchPage } from "./Pages/Suggestion/SearchPage";
 import { Explore } from "./Pages/Explore/Explore";
 import { Profile } from "./Pages/Profile/Profile";
