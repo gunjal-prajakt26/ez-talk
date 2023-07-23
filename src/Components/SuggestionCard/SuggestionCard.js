@@ -3,6 +3,7 @@ import { Avtar } from "../Avtar/Avtar";
 import "./SuggestionCard.css";
 
 export function SuggestionCard({ user }) {
+
   const {
     _id,
     firstName,

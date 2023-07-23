@@ -9,25 +9,36 @@ import { Bookmarks } from "./Pages/Bookmark/Bookmarks";
 import { SearchPage } from "./Pages/Suggestion/SearchPage";
 import { Explore } from "./Pages/Explore/Explore";
 import { Profile } from "./Pages/Profile/Profile";
+import { LoginPage } from "./Pages/Login/LoginPage";
+import { SignupPage } from "./Pages/Signup/SignupPage";
+import { PostDetail } from "./Pages/PostDetail/PostDetail";
+import { AuthContext } from "./Context/AuthConetxt";
+import { useContext } from "react";
+import { PrivateRoute } from "./Components/PrivateRoute/PrivateRoute";
 
 function App() {
+  const { isLogin } = useContext(AuthContext);
+
   return (
     <div className="App">
       <div className="header-container">
-        <Header />
+      {isLogin && <Header />}
       </div>
       <div className="app-body">
-        <Navbar />
+      {isLogin && <Navbar />}
         <div className="app-content">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/bookmarks" element={<Bookmarks />} />
-            <Route path="/explore" element={<Explore />} />
-            <Route path="profile/:id" element={<Profile />} />
+            <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+            <Route path="/bookmarks" element={<PrivateRoute><Bookmarks /></PrivateRoute>} />
+            <Route path="/explore" element={<PrivateRoute><Explore /></PrivateRoute>} />
+            <Route path="profile/:id" element={<PrivateRoute><Profile /></PrivateRoute>} />
+            <Route path="postDetail/:postId" element={<PrivateRoute><PostDetail /></PrivateRoute>} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
           </Routes>
         </div>
-        <SearchPage />
-      </div> 
+        {isLogin && <SearchPage />}
+      </div>
     </div>
   );
 }

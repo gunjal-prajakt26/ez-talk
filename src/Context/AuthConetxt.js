@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { json } from "react-router-dom";
 import { formatDate } from "../backend/utils/authUtils";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
@@ -10,18 +11,25 @@ export function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorageToken?.token);
   const localStorageUser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(localStorageUser?.user);
+  const [isLogin, setIsLogin] = useState(false);
+  const navigate = useNavigate();
 
-  const loginUser = async () => {
+  const loginUser = async (creds) => {
     try {
-      const {data:{foundUser, encodedToken}, status} = await axios.post("/api/auth/login",{
-        username: "kevindebruyne",
-    password: "kevindebruyne123",
-      })
+      const {
+        data: { foundUser, encodedToken },
+        status,
+      } = await axios.post("/api/auth/login", {
+        username: creds.username,
+        password: creds.password,
+      });
       if (status === 200) {
-      localStorage.setItem("token", JSON.stringify({ token: encodedToken }));
-      setToken(encodedToken);
-      localStorage.setItem("user", JSON.stringify({ user: foundUser }));
-      setUser(foundUser);
+        localStorage.setItem("token", JSON.stringify({ token: encodedToken }));
+        setToken(encodedToken);
+        localStorage.setItem("user", JSON.stringify({ user: foundUser }));
+        setUser(foundUser);
+        setIsLogin(true);
+        navigate("/");
       }
     } catch (error) {
       console.error(error);
@@ -30,18 +38,22 @@ export function AuthProvider({ children }) {
 
   const signupAuthUser = async (signupData) => {
     try {
-      const {data:{createdUser, encodedToken}, status} = await axios.post("/api/auth/signup", {...signupData})
-        if(status === 201) {
-          localStorage.setItem("token", JSON.stringify({ token: encodedToken }));
-          setToken(encodedToken);
-          localStorage.setItem("user", JSON.stringify({ user: createdUser }));
-          setUser(createdUser);
-        }
+      const {
+        data: { createdUser, encodedToken },
+        status,
+      } = await axios.post("/api/auth/signup", { ...signupData });
+      if (status === 201) {
+        localStorage.setItem("token", JSON.stringify({ token: encodedToken }));
+        setToken(encodedToken);
+        localStorage.setItem("user", JSON.stringify({ user: createdUser }));
+        setUser(createdUser);
+        setIsLogin(true);
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
     }
-    catch(error) {
-        console.error(error)
-    }
-}
+  };
 
   const abc = {
     _id: "01",
@@ -83,15 +95,19 @@ export function AuthProvider({ children }) {
     ],
   };
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    // signupAuthUser(abc);
-    loginUser();
-  },[])
+  //   // signupAuthUser(abc);
+  //   loginUser({username: "pareshaaaaan",
+  //   password: "123",});
+  // },[])
+  console.log(user, token);
 
   return (
     <>
-      <AuthContext.Provider value={{ token, user,setUser }}>
+      <AuthContext.Provider
+        value={{ token, user, setUser, loginUser, signupAuthUser,isLogin }}
+      >
         {children}
       </AuthContext.Provider>
     </>

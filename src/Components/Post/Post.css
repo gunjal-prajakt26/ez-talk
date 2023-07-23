@@ -73,7 +73,9 @@
     width: 95%;
     
 }
-
+.post-content-1 {
+    width: 100%;
+}
 .post-user-data {
     display: flex;
     justify-content: space-between;

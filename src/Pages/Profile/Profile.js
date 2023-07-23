@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Post } from "../../Components/Post/Post";
 import { AuthContext } from "../../Context/AuthConetxt";
 import { DataContext } from "../../Context/DataContext";
+import {UserCog } from 'lucide-react';
 import "./Profile.css";
 
 export function Profile() {
@@ -65,7 +66,7 @@ export function Profile() {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <i class="bi bi-menu-button-wide"></i>
+              <UserCog size={32} strokeWidth={2.5} />
             </span>
             <ul class="dropdown-menu">
               <li className="dropdown-item">Edit</li>
@@ -73,7 +74,7 @@ export function Profile() {
             </ul>
           </div>
             :<div class="dropdown-profile-container">
-            <button>Follow</button>
+            <button className="btn-follow">Follow</button>
           </div>
           }
         </div>
