@@ -44,10 +44,10 @@ export function SuggestionCard({ userObj}) {
         </div>{" "}
         { isFollowing(userObj._id, user) ? (
           <button
-            className="btn-follow"
+            className="btn-unfollow"
             onClick={() => unfollow(_id, setData, setUser)}
           >
-            Unfollow
+            Following
           </button>
         ) : (
           <button

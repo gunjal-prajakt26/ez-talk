@@ -36,6 +36,7 @@ export function AuthProvider({ children }) {
       }
     } catch (error) {
       console.error(error);
+      toast.error("LogIn Failed");
     }
   };
 
@@ -52,9 +53,11 @@ export function AuthProvider({ children }) {
         setUser(createdUser);
         setIsLogin(true);
         navigate("/");
+        toast.success("SignUp Successfully");
       }
     } catch (error) {
       console.error(error);
+      toast.error("SignUp Failed");
     }
   };
 

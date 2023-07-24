@@ -6,6 +6,7 @@ import { DataContext } from "../../Context/DataContext";
 import { follow, isFollowing, unfollow } from "../../utils/followUnfollow";
 import { UserCog } from "lucide-react";
 import "./Profile.css";
+import { EditProfile } from "../../Components/EditProfile/EditProfile";
 
 export function Profile() {
   const { id } = useParams();
@@ -82,18 +83,18 @@ export function Profile() {
                 <UserCog size={32} strokeWidth={2.5} />
               </span>
               <ul class="dropdown-menu">
-                <li className="dropdown-item">Edit</li>
-                <li className="dropdown-item">Logout</li>
+                <span className="dropdown-item" type="" data-bs-toggle="modal" data-bs-target="#exampleModal-profile">Edit</span>
+                <span className="dropdown-item">Logout</span>
               </ul>
             </div>
           ) : (
             <div class="dropdown-profile-container">
               {isFollowing(id, user) ? (
                 <button
-                  className="btn-follow"
-                  onClick={() => unfollow(id, setData, setUser)}
+                  className="btn-unfollow"
+                  onCspanck={() => unfollow(id, setData, setUser)}
                 >
-                  Unfollow
+                  Following
                 </button>
               ) : (
                 <button
@@ -149,9 +150,21 @@ export function Profile() {
         </div>
         <hr />
         <div>
-          {getPosts.map((obj) => (
+          {getPosts.length > 0
+            ?getPosts.map((obj) => (
             <Post post={obj} />
-          ))}
+          ))
+          :<p className="empty-page">No Posts</p>
+          }
+        </div>
+        <div
+          class="modal fade modal-lg"
+          id="exampleModal-profile"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel-profile"
+          aria-hidden="true"
+        >
+          <EditProfile user={user}/>
         </div>
       </div>
     </>

@@ -15,6 +15,7 @@ import { PostDetail } from "./Pages/PostDetail/PostDetail";
 import { AuthContext } from "./Context/AuthConetxt";
 import { useContext } from "react";
 import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { PrivateRoute } from "./Components/PrivateRoute/PrivateRoute";
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
       </div>
       <ToastContainer
         position='bottom-right'
-        autoClose={500}
+        autoClose={700}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

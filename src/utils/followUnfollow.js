@@ -1,5 +1,4 @@
-import axios from "axios";
-import { followService } from "../Services/userService";
+import { toast } from "react-toastify";
 
 export const follow = async (id, setData, setUser) => {
     try {
@@ -12,6 +11,8 @@ export const follow = async (id, setData, setUser) => {
         // localStorage.setItem("user", JSON.stringify({ user: jsonResponse.user }));
         setUser(jsonResponse.user);
           setData({type:"UPDATE_USERLIST", payload: jsonResponse.followUser});
+      toast.success("Followed");
+
       }
     } catch (error) {
       console.log(error);
@@ -32,6 +33,7 @@ export const follow = async (id, setData, setUser) => {
           if(response.status === 200) {
               setUser(jsonResponse.user);
               setData({type:"UPDATE_USERLIST", payload: jsonResponse.followUser});
+              toast.warn("UnFollowed");
           }
       }
       catch (error) {

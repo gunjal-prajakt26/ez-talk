@@ -67,3 +67,7 @@ div:nth-of-type(3) {flex-grow: 1;}
   margin-left: 12em;
   margin-right: 18em
 }
+
+.empty-page {
+  margin: 10em 18em;
+}

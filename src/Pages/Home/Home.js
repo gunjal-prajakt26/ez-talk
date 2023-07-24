@@ -138,7 +138,10 @@ export function Home() {
         </div>
       </div>
       <div>
-          {filteredPosts.map((obj) => <Post post={obj} />)}
+          {filteredPosts.length > 0
+            ?filteredPosts.map((obj) => <Post post={obj} />)
+          :<p className="empty-page">No Posts</p>
+            }
       </div>
     </div>
     )}

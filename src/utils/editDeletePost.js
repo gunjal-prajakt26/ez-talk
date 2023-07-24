@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const createPost = async (token, post, user, setData) => {
     try {
@@ -16,6 +17,8 @@ export const createPost = async (token, post, user, setData) => {
       console.log({ response });
       if (response.status === 201) {
         setData({ type: "SET_POSTS", payload: response.data.posts });
+      toast.success("Post Created");
+
       }
     } catch (error) {
       console.error(error);
@@ -34,6 +37,7 @@ export const createPost = async (token, post, user, setData) => {
       console.log(response.data.posts);
       if (response.status === 201) {
         setData({ type: "SET_POSTS", payload: response.data.posts });
+      toast.success("Post Edited");
       }
     } catch (error) {
       console.error(error);
@@ -47,6 +51,7 @@ export const createPost = async (token, post, user, setData) => {
       });
       if (response.status === 201) {
         setData({ type: "SET_POSTS", payload: response.data.posts });
+      toast.success("Post Deleted");
       }
     } catch (error) {
       console.error(error);

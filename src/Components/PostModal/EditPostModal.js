@@ -26,7 +26,7 @@ export const EditPostModal = (props) => {
   };
   return (
     <div class="modal-dialog modal-dialog-centered">
-      <div className="modal-content">
+      <div className="modal-content modal-content-1">
         <div className="post-container new-post">
           <Avtar postUsername={editingPost.username} />
           <div class="post-content">

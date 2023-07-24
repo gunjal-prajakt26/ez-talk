@@ -32,7 +32,9 @@ export function Bookmarks(){
             <h1 className="home-title">Bookmarks</h1>
             <div>
         {
-            getBookmarkedList.map((obj) => <Post post={obj} />)
+            getBookmarkedList.length > 0
+            ?getBookmarkedList.map((obj) => <Post post={obj} />)
+            :<p className="empty-page">No Bookmarks</p>
         }
       </div>
         </div>
