@@ -7,13 +7,13 @@ export const createPost = async (token, post, user, setData) => {
         {
           postData: {
             content: post.content,
-            mediaURL: post.postImage,
+            mediaURL: post.mediaURL,
             name: `${user.firstName} ${user.lastName}`,
           },
         },
         { headers: { authorization: token } }
       );
-      // console.log({ response });
+      console.log({ response });
       if (response.status === 201) {
         setData({ type: "SET_POSTS", payload: response.data.posts });
       }
@@ -31,7 +31,7 @@ export const createPost = async (token, post, user, setData) => {
           headers: { authorization: token },
         }
       );
-      // console.log(response);
+      console.log(response.data.posts);
       if (response.status === 201) {
         setData({ type: "SET_POSTS", payload: response.data.posts });
       }
@@ -40,12 +40,11 @@ export const createPost = async (token, post, user, setData) => {
     }
   };
   
-  export const deletePost = async (token, postId, setData) => {
+  export const deletePost = async (postId, setData,token) => {
     try {
       const response = await axios.delete(`/api/posts/${postId}`, {
         headers: { authorization: token },
       });
-      // console.log({response});
       if (response.status === 201) {
         setData({ type: "SET_POSTS", payload: response.data.posts });
       }

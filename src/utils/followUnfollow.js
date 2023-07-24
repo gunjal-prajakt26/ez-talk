@@ -1,17 +1,17 @@
 import axios from "axios";
 import { followService } from "../Services/userService";
 
-export const follow = async (id, token, setData, setUser) => {
+export const follow = async (id, setData, setUser) => {
     try {
-      const response = await axios.post(
-        `/api/users/follow/${id}`,
-        {},
-         { authorization: token }
-      );
-      console.log(response);
-      if(response.status === 200) {
-          setUser(response.data.user);
-          setData({type: "SET_USERS", payload: response.data.followUser});
+      const response = await fetch(`/api/users/follow/${id}`, {
+        method: 'POST',
+        headers: {authorization: localStorage.getItem("token"), },
+    })
+    const jsonResponse = await response.json();
+    if(response.status === 200) {
+        // localStorage.setItem("user", JSON.stringify({ user: jsonResponse.user }));
+        setUser(jsonResponse.user);
+          setData({type:"UPDATE_USERLIST", payload: jsonResponse.followUser});
       }
     } catch (error) {
       console.log(error);
@@ -19,17 +19,19 @@ export const follow = async (id, token, setData, setUser) => {
   };
   
   
-  export const unfollow = async (id, token, setData, setUser) => {
+  export const unfollow = async (id, setData, setUser) => {
       try {
-          const response = await axios.post(
-              `/api/users/unfollow/${id}`,
-              {},
-              { headers: { authorization: token } }
-            );
-            console.log(response);
+          const response = await await fetch(
+            `/api/users/unfollow/${id}`,
+            {
+              method: "POST",
+              headers: { authorization: localStorage.getItem("token") },
+            }
+          );
+            const jsonResponse = await response.json();
           if(response.status === 200) {
-              setUser(response.data.user);
-              setData({type: "SET_USERS", payload: response.data.followUser});
+              setUser(jsonResponse.user);
+              setData({type:"UPDATE_USERLIST", payload: jsonResponse.followUser});
           }
       }
       catch (error) {

@@ -14,6 +14,7 @@ import { SignupPage } from "./Pages/Signup/SignupPage";
 import { PostDetail } from "./Pages/PostDetail/PostDetail";
 import { AuthContext } from "./Context/AuthConetxt";
 import { useContext } from "react";
+import { ToastContainer } from "react-toastify";
 import { PrivateRoute } from "./Components/PrivateRoute/PrivateRoute";
 
 function App() {
@@ -39,6 +40,18 @@ function App() {
         </div>
         {isLogin && <SearchPage />}
       </div>
+      <ToastContainer
+        position='bottom-right'
+        autoClose={500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='light'
+      />
     </div>
   );
 }

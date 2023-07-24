@@ -2,14 +2,17 @@ import { Instagram } from "lucide-react";
 import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthConetxt";
+import { DataContext } from "../../Context/DataContext";
 import "./LoginPage.css";
 
 export function LoginPage() {
 const [inputData, setInputData]=useState({username:"",password:""})
-  const { user, token, loginUser} = useContext(AuthContext);
+  const {loginUser} = useContext(AuthContext);
+  const {setIsLoad}= useContext(DataContext);
 
   const loginHandler=()=>{
     loginUser(inputData)
+    setIsLoad(true);
   }
 
   const guestLoginHandler=()=>{

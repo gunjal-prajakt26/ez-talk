@@ -19,7 +19,7 @@ export function SearchPage() {
       <h4>Suggestions</h4>
       <div className="user-list">
         {getSuggestions.map((obj) => (
-          <SuggestionCard user={obj} />
+          <SuggestionCard userObj={obj} />
         ))}
       </div>
     </div>

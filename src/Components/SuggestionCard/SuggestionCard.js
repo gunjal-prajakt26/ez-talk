@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { Avtar } from "../Avtar/Avtar";
+import { AuthContext } from "../../Context/AuthConetxt";
+import { DataContext } from "../../Context/DataContext";
+import { follow, isFollowing, unfollow } from "../../utils/followUnfollow";
 import "./SuggestionCard.css";
 
-export function SuggestionCard({ user }) {
-
+export function SuggestionCard({ userObj}) {
+  const { user,setUser } = useContext(AuthContext);
+    const { setData } = useContext(DataContext);
   const {
     _id,
     firstName,
@@ -20,23 +24,39 @@ export function SuggestionCard({ user }) {
     location,
     createdAt,
     updatedAt,
-  } = user;
+  } = userObj;
+
+  // console.log(isFollowing(userObj._id, user));
   return (
     <div>
       <div class="suggestion-user-conatiner">
-        <NavLink className="username-link" to={`/profile/${user._id}`}>
+        <NavLink className="username-link" to={`/profile/${userObj._id}`}>
           {" "}
           <img class="avtar" src={avatar} />{" "}
         </NavLink>
         <div className="suggestion-user-deatils">
-          <NavLink className="username-link" to={`/profile/${user._id}`}>
+          <NavLink className="username-link" to={`/profile/${userObj._id}`}>
             <p className="fullName"> {firstName + " " + lastName} </p>{" "}
           </NavLink>
-          <NavLink className="username-link" to={`/profile/${user._id}`}>
+          <NavLink className="username-link" to={`/profile/${userObj._id}`}>
             <p className="userName"> @ {username} </p>{" "}
           </NavLink>
         </div>{" "}
-        <button className="btn-follow">Follow</button>
+        { isFollowing(userObj._id, user) ? (
+          <button
+            className="btn-follow"
+            onClick={() => unfollow(_id, setData, setUser)}
+          >
+            Unfollow
+          </button>
+        ) : (
+          <button
+            className="btn-follow"
+            onClick={() => follow(_id, setData, setUser)}
+          >
+            Follow
+          </button>
+        )}
       </div>{" "}
     </div>
   );

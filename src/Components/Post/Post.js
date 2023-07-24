@@ -2,21 +2,18 @@ import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthConetxt";
 import { DataContext } from "../../Context/DataContext";
-import { addToBookmark } from "../../utils/bookMarkService";
+import { addToBookmark, isPostBookmarked, removeFromBookmark } from "../../utils/bookMarkService";
 import { deletePost } from "../../utils/editDeletePost";
 import { follow, isFollowing, unfollow } from "../../utils/followUnfollow";
+import { isPostLiked, likePost,dislikePost } from "../../utils/likeDislikeService";
 import { Avtar } from "../Avtar/Avtar";
-import { NewPostModal } from "../PostModal/NewPostModal";
+import { EditPostModal } from "../PostModal/EditPostModal";
 import "./Post.css";
 
 export function Post({ post }) {
   const {
-    data: { users },
+    data: { users, allPosts,bookmarks },
     setData,
-    addToBookmark,
-    removeFromBookmark,
-    likePost,
-    dislikePost,
   } = useContext(DataContext);
   const { user, token, setUser } = useContext(AuthContext);
   const getUser= users.find((obj)=>obj.username === post.username);
@@ -42,22 +39,20 @@ export function Post({ post }) {
     return formattedDate;
   };
 
-  const isPostBookmarked = (id, allPosts) => {
-    return allPosts.bookmarks.find((_id) => _id === id) ? true : false;
-  };
-
   const bookmarkHandler = () => {
-    isPostBookmarked
-      ? removeFromBookmark(post._id)
-      : addToBookmark(post._id, token);
+    isPostBookmarked(_id, bookmarks)
+    ?removeFromBookmark(post._id, setData)
+    :addToBookmark(post._id, setData);
   };
 
   const likeHandler = () => {
-    likePost(post._id, token);
+    isPostLiked(post, user)
+    ?dislikePost(post._id, setData)
+    :likePost(post._id, setData)
   };
 
-  const id = users.filter(({ username }) => username === post.username);
-
+  const id = users.find(({ username }) => username === post.username)._id;
+  
   return (
     <div className="post-container">
       <NavLink className="username-link" to={`/profile/${getUser._id}`}>
@@ -91,14 +86,14 @@ export function Post({ post }) {
                 <li
                   className="dropdown-item"
                   data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
+                  data-bs-target="#exampleModal-1"
                   type="li"
                 >
                   Edit
                 </li>
                 <li
                   className="dropdown-item"
-                  onClick={() => deletePost(token, post._id, setData)}
+                  onClick={() => deletePost(post._id, setData,token)}
                 >
                   Delete
                 </li>
@@ -118,14 +113,14 @@ export function Post({ post }) {
                 {isFollowing(id, user) ? (
                   <li
                     className="dropdown-item"
-                    onClick={() => unfollow(id, token, setData, setUser)}
+                    onClick={() => unfollow(id, setData, setUser)}
                   >
                     Unfollow
                   </li>
                 ) : (
                   <li
                     className="dropdown-item"
-                    onClick={() => follow(id, token, setData, setUser)}
+                    onClick={() => follow(id, setData, setUser)}
                   >
                     Follow
                   </li>
@@ -139,36 +134,41 @@ export function Post({ post }) {
           {post?.mediaURL && <img className="post-img" src={mediaURL} />}
         </div>
         <div className="icon-container">
-          <p className="icon-list">
-            <i class="post-icons bi bi-heart" onClick={() => likeHandler()}></i>{" "}
-            <span className="counts">{likes.likeCount}</span>
+          <p className="icon-list" onClick={() => likeHandler()}>
+          {isPostLiked(post, user)
+          ?<i class="bi bi-suit-heart-fill post-icons" style={{color:"red"}}></i>
+          :<i class="bi bi-suit-heart post-icons"></i>
+          }
+           <span className="counts">{likes.likeCount}</span>
           </p>
           <p className="icon-list">
           <NavLink className="username-link" to={`/postDetail/${_id}`}>
             <i class="post-icons bi bi-chat-left"></i></NavLink>{" "}
             <span className="counts">
-              {comments.length ? comments.length : ""}
+              {comments ? comments.length : ""}
             </span>
           </p>
           <p className="icon-list">
             <i class="post-icons bi bi-share"></i>
           </p>
           <p className="icon-list" onClick={() => bookmarkHandler()}>
-            <i
-              class="post-icons bi bi-bookmark-fill"
-              style={{ color: isPostBookmarked ? "black" : "white" }}
-            ></i>
+          {isPostBookmarked(_id, bookmarks) 
+          ?<i class="post-icons bi bi-bookmark-fill"></i>
+          :<i class="post-icons bi bi-bookmark"></i>
+          }
           </p>
         </div>
       </div>
       <div
         class="modal fade"
-        id="exampleModal"
+        id="exampleModal-1"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <NewPostModal user={user} />
+        <EditPostModal
+        editingPostId={_id}
+        />
       </div>
     </div>
   );

@@ -43,7 +43,7 @@ export function Header() {
             >
               <div className="user-list">
                 {searchUsers.length > 0 ? (
-                  searchUsers.map((obj) => <SuggestionCard user={obj} />)
+                  searchUsers.map((obj) => <SuggestionCard userObj={obj} />)
                 ) : (
                   <h5 style={{textAlign:"center"}}>No user Found.</h5>
                 )}

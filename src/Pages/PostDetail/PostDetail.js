@@ -4,16 +4,14 @@ import { Avtar } from "../../Components/Avtar/Avtar";
 import { Comment } from "../../Components/Comment/Comment";
 import { AuthContext } from "../../Context/AuthConetxt";
 import { DataContext } from "../../Context/DataContext";
+import { addToBookmark, isPostBookmarked, removeFromBookmark } from "../../utils/bookMarkService";
+import { isPostLiked,likePost,dislikePost } from "../../utils/likeDislikeService";
 
 export function PostDetail() {
   const { postId } = useParams();
   const {
-    data: { users, allPosts },
+    data: { users, allPosts,bookmarks },
     setData,
-    addToBookmark,
-    removeFromBookmark,
-    likePost,
-    dislikePost,
   } = useContext(DataContext);
   const { user, token, setUser } = useContext(AuthContext);
   const post = allPosts.find(({ _id }) => _id === postId);
@@ -41,18 +39,16 @@ export function PostDetail() {
     return formattedDate;
   };
 
-  const isPostBookmarked = (id, allPosts) => {
-    return allPosts.bookmarks.find((_id) => _id === id) ? true : false;
-  };
-
   const bookmarkHandler = () => {
-    isPostBookmarked
-      ? removeFromBookmark(post._id)
-      : addToBookmark(post._id, token);
+    isPostBookmarked(_id, bookmarks)
+    ?removeFromBookmark(post._id, setData)
+    :addToBookmark(post._id, setData);
   };
 
   const likeHandler = () => {
-    likePost(post._id, token);
+    isPostLiked(post, user)
+    ?dislikePost(post._id, setData)
+    :likePost(post._id, setData)
   };
 
   const id = users.filter(({ username }) => username === post.username);
@@ -97,13 +93,13 @@ export function PostDetail() {
             {post?.mediaURL && <img className="post-img" src={mediaURL} />}
           </div>
           <div className="icon-container">
-            <p className="icon-list">
-              <i
-                class="post-icons bi bi-heart"
-                onClick={() => likeHandler()}
-              ></i>{" "}
-              <span className="counts">{likes.likeCount}</span>
-            </p>
+          <p className="icon-list" onClick={() => likeHandler()}>
+          {isPostLiked(post, user)
+          ?<i class="bi bi-suit-heart-fill post-icons" style={{color:"red"}}></i>
+          :<i class="bi bi-suit-heart post-icons"></i>
+          }
+           <span className="counts">{likes.likeCount}</span>
+          </p>
             <p className="icon-list">
               <i class="post-icons bi bi-chat-left"></i>{" "}
               <span className="counts">
@@ -114,10 +110,10 @@ export function PostDetail() {
               <i class="post-icons bi bi-share"></i>
             </p>
             <p className="icon-list" onClick={() => bookmarkHandler()}>
-              <i
-                class="post-icons bi bi-bookmark-fill"
-                style={{ color: isPostBookmarked ? "black" : "white" }}
-              ></i>
+          {isPostBookmarked(_id, bookmarks) 
+          ?<i class="post-icons bi bi-bookmark-fill"></i>
+          :<i class="post-icons bi bi-bookmark"></i>
+          }
             </p>
           </div>
           <div className="comments">

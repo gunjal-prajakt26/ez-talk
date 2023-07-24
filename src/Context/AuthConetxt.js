@@ -3,6 +3,8 @@ import axios from "axios";
 import { json } from "react-router-dom";
 import { formatDate } from "../backend/utils/authUtils";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 
 export const AuthContext = createContext();
 
@@ -10,7 +12,7 @@ export function AuthProvider({ children }) {
   const localStorageToken = JSON.parse(localStorage.getItem("login"));
   const [token, setToken] = useState(localStorageToken?.token);
   const localStorageUser = JSON.parse(localStorage.getItem("user"));
-  const [user, setUser] = useState(localStorageUser?.user);
+  const [user, setUser] = useState([]);
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
 
@@ -30,6 +32,7 @@ export function AuthProvider({ children }) {
         setUser(foundUser);
         setIsLogin(true);
         navigate("/");
+        toast.success("LogIn Successfully");
       }
     } catch (error) {
       console.error(error);
@@ -101,8 +104,6 @@ export function AuthProvider({ children }) {
   //   loginUser({username: "pareshaaaaan",
   //   password: "123",});
   // },[])
-  console.log(user, token);
-
   return (
     <>
       <AuthContext.Provider

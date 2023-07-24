@@ -62,3 +62,11 @@
 .modal-content {
     background-color: transparent;
 }
+
+.close-icon-modal {
+    position: absolute;
+}
+
+.img-preview-modal {
+    width: 90%;
+}

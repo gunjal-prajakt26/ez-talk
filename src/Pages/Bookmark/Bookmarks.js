@@ -1,23 +1,18 @@
 import axios from "axios";
 import { useContext, useEffect } from "react";
 import { Post } from "../../Components/Post/Post";
-import { AuthContext } from "../../Context/AuthConetxt";
 import { DataContext } from "../../Context/DataContext";
 
 export function Bookmarks(){
 
     const {
-        data: { bookmarks },
+        data: {allPosts, bookmarks },
         setData,
-        isLoad,
-        isError,
       } = useContext(DataContext);
-      const { user, token } = useContext(AuthContext);
-
 
     const getBookmarks = async () => {
         try {
-            const response = await axios.get("/api/users/bookmark/", {headers: { authorization: token}})
+            const response = await axios.get("/api/users/bookmark/", {headers: { authorization: localStorage.getItem("token") }})
             if(response.status === 200) {
                 setData({type: "SET_BOOKMARKS", payload: response.data.bookmarks})
             }
@@ -27,6 +22,7 @@ export function Bookmarks(){
         }
     }
 
+    const getBookmarkedList= bookmarks.map((obj)=>allPosts.find(({_id})=>obj==_id));
     useEffect(() => {
         getBookmarks();
     }, [])
@@ -36,7 +32,7 @@ export function Bookmarks(){
             <h1 className="home-title">Bookmarks</h1>
             <div>
         {
-            bookmarks.map((obj) => <Post post={obj} />)
+            getBookmarkedList.map((obj) => <Post post={obj} />)
         }
       </div>
         </div>
