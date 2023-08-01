@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthConetxt";
 import { DataContext } from "../../Context/DataContext";
 import { Avtar } from "../Avtar/Avtar";
@@ -9,6 +9,8 @@ import "./Navbar.css";
 export function Navbar() {
   const { setData } = useContext(DataContext);
   const { user, token } = useContext(AuthContext);
+  const location = useLocation();
+
   const activeStyle = {
     fontWeight: "700",
     borderLeft: "2px solid var(--primary-color)",
@@ -46,6 +48,7 @@ export function Navbar() {
           className="tabs link"
           to={`/profile/${user._id}`}
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          state={{ from: location }}
         >
           <i class="bi bi-person-square"> </i>Profile
         </NavLink>

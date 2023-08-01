@@ -12,6 +12,10 @@
   --username-color: #9E9E9E;
 }
 
+#portal{
+  filter: blur(#fff);
+}
+
 .App {
   margin: auto 5px;
   font-family: 'Ubuntu', sans-serif;

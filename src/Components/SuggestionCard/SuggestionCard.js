@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthConetxt";
 import { DataContext } from "../../Context/DataContext";
 import { follow, isFollowing, unfollow } from "../../utils/followUnfollow";
 import "./SuggestionCard.css";
 
-export function SuggestionCard({ userObj}) {
+export function SuggestionCard({ userObj, setInput}) {
   const { user,setUser } = useContext(AuthContext);
     const { setData } = useContext(DataContext);
+    const prevLocation= useLocation();
   const {
     _id,
     firstName,
@@ -26,20 +27,23 @@ export function SuggestionCard({ userObj}) {
     updatedAt,
   } = userObj;
 
-  // console.log(isFollowing(userObj._id, user));
+  const clickHandler=()=>{
+    setInput?.(()=>"");
+  }
   return (
     <div>
       <div class="suggestion-user-conatiner">
-        <NavLink className="username-link" to={`/profile/${userObj._id}`}>
+          
+        <NavLink className="username-link" to={`/profile/${userObj._id}`} state={{ from: prevLocation }}>
           {" "}
-          <img class="avtar" src={avatar} />{" "}
+          <img class="avtar" src={avatar} onClick={()=>clickHandler()}/>{" "}
         </NavLink>
         <div className="suggestion-user-deatils">
-          <NavLink className="username-link" to={`/profile/${userObj._id}`}>
-            <p className="fullName"> {firstName + " " + lastName} </p>{" "}
+          <NavLink className="username-link" to={`/profile/${userObj._id}`} state={{ from: prevLocation }}>
+            <p className="fullName" onClick={()=>clickHandler()}> {firstName + " " + lastName} </p>{" "}
           </NavLink>
-          <NavLink className="username-link" to={`/profile/${userObj._id}`}>
-            <p className="userName"> @ {username} </p>{" "}
+          <NavLink className="username-link" to={`/profile/${userObj._id}`} state={{ from: prevLocation }}>
+            <p className="userName" onClick={()=>clickHandler()}> @ {username} </p>{" "}
           </NavLink>
         </div>{" "}
         { isFollowing(userObj._id, user) ? (

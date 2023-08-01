@@ -97,3 +97,30 @@
     margin-top: -0.1em;
     margin-left: 0.2em;
 }
+
+
+.edittweet-modal {
+    position: fixed;
+    /* z-index: 50; */
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 0.8rem;
+    border-radius: 10px;
+    display: flex;
+    max-height: 70vh;
+    /* width: 40rem; */
+    overflow: auto;
+}
+
+
+
+.edittweet-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+}

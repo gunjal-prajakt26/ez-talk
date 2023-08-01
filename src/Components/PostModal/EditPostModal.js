@@ -1,33 +1,38 @@
 import { XCircle } from "lucide-react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import { AuthContext } from "../../Context/AuthConetxt";
 import { DataContext } from "../../Context/DataContext";
 import { createPost, deletePost, editPost } from "../../utils/editDeletePost";
 import { Avtar } from "../Avtar/Avtar";
 
 export const EditPostModal = (props) => {
-  const {editingPostId} = props;
+  const {editingPostId,setEditModal} = props;
+  console.log(editingPostId)
   const {
     data: { allPosts },
     setData
   } = useContext(DataContext);
   const { token } = useContext(AuthContext);
-  const editingPost = allPosts.find(({ _id }) => _id === editingPostId)
+  const editingPost = allPosts.find(({ _id }) => _id == editingPostId)
 
-  const [inputData, setInputData] = useState({...editingPost});
+  const [inputData, setInputData] = useState(editingPost);
 
   const imageUploadHandler = (e) => {
     const imageUrl = URL.createObjectURL(e.target.files[0]);
-    setInputData((postdata) => ({ ...postdata, mediaURL: imageUrl }));
+    setInputData((inputData) => ({ ...inputData, mediaURL: imageUrl }));
   };
 
   const postClickHandler = () => {
     editPost(token, inputData, setData);
+    setEditModal(false);
   };
-  return (
-    <div class="modal-dialog modal-dialog-centered">
-      <div className="modal-content modal-content-1">
-        <div className="post-container new-post">
+
+  return ReactDOM.createPortal(
+    <>
+    <div className="edittweet-overlay"></div>
+      <div className="modal-content-1 edittweet-modal">
+        <div className="new-post-modal">
           <Avtar postUsername={editingPost.username} />
           <div class="post-content">
             <textarea
@@ -71,14 +76,14 @@ export const EditPostModal = (props) => {
                 onChange={imageUploadHandler}
               />
               <button className="btn-post"
-              disabled={inputData.content?.trim().length === 0 && inputData.mediaURL.length === 0&&true} type="button" data-bs-dismiss="modal" aria-label="Close" onClick={() => postClickHandler()}>
+              disabled={inputData.content?.trim().length === 0 && inputData.mediaURL.length === 0&&true} onClick={() => postClickHandler()}>
                 Save Post
               </button>
             </div>
           </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" onClick={()=>setEditModal(false)}></button>
         </div>
       </div>
-    </div>
+      </>, document.getElementById("portal")
   );
 };

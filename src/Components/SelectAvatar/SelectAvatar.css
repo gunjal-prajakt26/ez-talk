@@ -1,0 +1,16 @@
+.avatar-list {
+}
+
+.avatar-list-img{
+    /* margin: 1em; */
+    width: 10.55em;
+    height: 10.55em;
+    border-radius: 50%;
+    transition: transform .2s;
+}
+
+.avatar-list-img:hover{
+    cursor: pointer;
+    box-shadow: var(--primary-color) 0px 5px 15px 0px;
+    transform: scale(1.1);
+}

@@ -140,7 +140,7 @@ export function Home() {
       <div>
           {filteredPosts.length > 0
             ?filteredPosts.map((obj) => <Post post={obj} />)
-          :<p className="empty-page">No Posts</p>
+          :<p className="empty-page">Oops no posts to show here!</p>
             }
       </div>
     </div>

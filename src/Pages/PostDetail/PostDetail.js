@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Avtar } from "../../Components/Avtar/Avtar";
 import { Comment } from "../../Components/Comment/Comment";
 import { AuthContext } from "../../Context/AuthConetxt";
@@ -13,10 +13,15 @@ export function PostDetail() {
     data: { users, allPosts,bookmarks },
     setData,
   } = useContext(DataContext);
-  const { user, token, setUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const post = allPosts.find(({ _id }) => _id === postId);
   const getUser = users.find((obj) => obj.username === post.username);
-  console.log(post);
+  const prevLocation= useLocation();
+  const navigate = useNavigate();
+  const navigateBack = () => {
+    navigate(prevLocation?.state?.from?.pathname)
+}
+  
   const {
     _id,
     content,
@@ -56,7 +61,7 @@ export function PostDetail() {
   return (
     <div className="home-page">
       <div className="heading-container">
-        <sapn className="back-icon">
+        <sapn className="back-icon" onClick={navigateBack}>
           <i class="bi bi-arrow-left"></i>
         </sapn>
         <div className="profile-heading">
@@ -64,7 +69,7 @@ export function PostDetail() {
         </div>
       </div>
       <div className="post-container">
-        <NavLink className="username-link" to={`/profile/${getUser._id}`}>
+        <NavLink className="username-link" to={`/profile/${getUser._id}`} state={{ from: prevLocation }}>
           {" "}
           <Avtar postUsername={username} />
         </NavLink>
@@ -74,13 +79,13 @@ export function PostDetail() {
               <div className="user-details">
                 <NavLink
                   className="username-link"
-                  to={`/profile/${getUser._id}`}
+                  to={`/profile/${getUser._id}`} state={{ from: prevLocation }}
                 >
                   <p className="fullName">{name}</p>
                 </NavLink>
                 <NavLink
                   className="username-link"
-                  to={`/profile/${getUser._id}`}
+                  to={`/profile/${getUser._id}`} state={{ from: prevLocation }}
                 >
                   <p className="userName">@{username}</p>
                 </NavLink>

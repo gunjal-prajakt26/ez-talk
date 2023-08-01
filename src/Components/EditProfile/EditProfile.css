@@ -1,0 +1,65 @@
+.profile-info {
+    margin-top: 2rem;
+}
+
+label {
+    font-weight: 500;
+}
+
+::-webkit-input-placeholder{
+    color: gray;
+}
+
+.profile-edit-icon {
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.5;
+    padding: 0.2rem;
+    position: absolute;
+    left: 4.5rem;
+    top: 15.5rem;
+}
+
+.bg-img-icon {
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.5;
+    padding: 0.2rem;
+    position: absolute;
+    left: 23rem;
+    top: 6rem;
+}
+
+.profile-edit-icon:hover, .bg-img-icon:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+}
+
+.avatar-container {
+    position: absolute;
+    right:1em;
+    top: 1em;
+    width: 96%;
+    background-color: white;
+    border: 1px solid black;
+    padding: 1em;
+    /* display: flex; */
+}
+
+.avatar-list-conatiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.avatar-close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}

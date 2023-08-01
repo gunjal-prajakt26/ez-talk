@@ -16,11 +16,18 @@
 
 .me-2 {
     width: 100%;
+    border-radius: 2em;
+}
+
+.search-icon {
+    margin: 0.5em;
 }
 
 .search-container {
     position: relative;
     width: 20em;
+    display: flex;
+
 }
 
 .search-result {

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthConetxt";
 import { DataContext } from "../../Context/DataContext";
 import { addToBookmark, isPostBookmarked, removeFromBookmark } from "../../utils/bookMarkService";
@@ -16,6 +16,9 @@ export function Post({ post }) {
     setData,
   } = useContext(DataContext);
   const { user, token, setUser } = useContext(AuthContext);
+const location= useLocation();
+const [editModal, setEditModal]= useState(false);
+
   const getUser= users.find((obj)=>obj.username === post.username);
   const {
     _id,
@@ -52,7 +55,10 @@ export function Post({ post }) {
   };
 
   const id = users.find(({ username }) => username === post.username)._id;
-  
+  // const editClickHandler=()=>{
+  //   setEditingPostId(post._id)
+  // }
+  const editingPostId= post?._id
   return (
     <div className="post-container">
       <NavLink className="username-link" to={`/profile/${getUser._id}`}>
@@ -63,10 +69,10 @@ export function Post({ post }) {
         <div className="post-user-data">
           <div className="user-info">
             <div className="user-details">
-              <NavLink className="username-link" to={`/profile/${getUser._id}`}>
+              <NavLink className="username-link" to={`/profile/${getUser._id}`} state={{ from: location }}>
                 <p className="fullName">{name}</p>
               </NavLink>
-              <NavLink className="username-link" to={`/profile/${getUser._id}`}>
+              <NavLink className="username-link" to={`/profile/${getUser._id}`} state={{ from: location }}>
                 <p className="userName">@{username}</p>
               </NavLink>
             </div>
@@ -83,14 +89,12 @@ export function Post({ post }) {
                 <i class="bi bi-three-dots"></i>
               </span>
               <ul class="dropdown-menu">
-                <li
+                <span
                   className="dropdown-item"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal-1"
-                  type="li"
+                  onClick={()=>setEditModal(true)}
                 >
                   Edit
-                </li>
+                </span>
                 <li
                   className="dropdown-item"
                   onClick={() => deletePost(post._id, setData,token)}
@@ -142,7 +146,7 @@ export function Post({ post }) {
            <span className="counts">{likes.likeCount}</span>
           </p>
           <p className="icon-list">
-          <NavLink className="username-link" to={`/postDetail/${_id}`}>
+          <NavLink className="username-link" to={`/postDetail/${_id}`} state={{ from: location }}>
             <i class="post-icons bi bi-chat-left"></i></NavLink>{" "}
             <span className="counts">
               {comments ? comments.length : ""}
@@ -159,17 +163,11 @@ export function Post({ post }) {
           </p>
         </div>
       </div>
-      <div
-        class="modal fade"
-        id="exampleModal-1"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <EditPostModal
-        editingPostId={_id}
+      {editModal && <EditPostModal
+        editingPostId={editingPostId}
+        setEditModal={setEditModal}
         />
-      </div>
+      }
     </div>
   );
 }

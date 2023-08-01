@@ -43,12 +43,17 @@
     padding: 0.2em;
     font-size: 1.3rem;
     font-weight: 500;
-    background-color: var(--primary-color);
     color: white;
+    background-color: #81D4FA;
     margin-top: 0.7em;
 }
 
-.post-btn :hover, .btn-post:hover{
+.post-btn :hover{
+    font-weight: bold;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-post:hover{
     font-weight: bold;
     cursor: pointer;
     background-color: var(--primary-color);
@@ -69,4 +74,10 @@
 
 .img-preview-modal {
     width: 90%;
+    margin-top: 1em;
+}
+
+.new-post-modal{
+    display: flex;
+    width: 100%;
 }

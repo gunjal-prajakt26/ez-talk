@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Post } from "../../Components/Post/Post";
 import { AuthContext } from "../../Context/AuthConetxt";
 import { DataContext } from "../../Context/DataContext";
@@ -10,14 +10,18 @@ import { EditProfile } from "../../Components/EditProfile/EditProfile";
 
 export function Profile() {
   const { id } = useParams();
-  const {
-    data: { allPosts, users },
-    setData,
-    isLoad,
-    isError,
-  } = useContext(DataContext);
-  const { user, setUser } = useContext(AuthContext);
-
+  const prevLocation = useLocation();
+  const navigate = useNavigate();
+  const navigateBack = () => {
+    navigate(prevLocation?.state?.from?.pathname)
+}
+const {
+  data: { allPosts, users },
+  setData,
+  isLoad,
+  isError,
+} = useContext(DataContext);
+const { user, setUser } = useContext(AuthContext);
   const getUser =
     user._id == id ? { ...user } : users.find((obj) => obj._id == id);
   const {
@@ -65,7 +69,7 @@ export function Profile() {
     <>
       <div className="profile-container">
         <div className="heading-container">
-          <sapn className="back-icon">
+          <sapn className="back-icon" onClick={navigateBack}>
             <i class="bi bi-arrow-left"></i>
           </sapn>
           <div className="profile-heading">
@@ -154,17 +158,18 @@ export function Profile() {
             ?getPosts.map((obj) => (
             <Post post={obj} />
           ))
-          :<p className="empty-page">No Posts</p>
+          :<p className="empty-page">Oops no posts to show here!</p>
           }
         </div>
         <div
           class="modal fade modal-lg"
           id="exampleModal-profile"
           tabindex="-1"
+          data-bs-backdrop="static" data-bs-keyboard="false"
           aria-labelledby="exampleModalLabel-profile"
           aria-hidden="true"
         >
-          <EditProfile user={user}/>
+          <EditProfile/>
         </div>
       </div>
     </>

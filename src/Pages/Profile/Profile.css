@@ -85,3 +85,7 @@ hr {
 
 .profile-edit-img {
 }
+
+.back-icon:hover {
+    cursor: pointer;
+}
