@@ -12,7 +12,7 @@ import "./Post.css";
 
 export function Post({ post }) {
   const {
-    data: { users, allPosts,bookmarks },
+    data: { users,bookmarks },
     setData,
   } = useContext(DataContext);
   const { user, token, setUser } = useContext(AuthContext);
@@ -55,9 +55,7 @@ const [editModal, setEditModal]= useState(false);
   };
 
   const id = users.find(({ username }) => username === post.username)._id;
-  // const editClickHandler=()=>{
-  //   setEditingPostId(post._id)
-  // }
+  
   const editingPostId= post?._id
   return (
     <div className="post-container">
@@ -70,7 +68,7 @@ const [editModal, setEditModal]= useState(false);
           <div className="user-info">
             <div className="user-details">
               <NavLink className="username-link" to={`/profile/${getUser._id}`} state={{ from: location }}>
-                <p className="fullName">{name}</p>
+                <p className="fullName">{getUser.firstName+" "+getUser.lastName}</p>
               </NavLink>
               <NavLink className="username-link" to={`/profile/${getUser._id}`} state={{ from: location }}>
                 <p className="userName">@{username}</p>

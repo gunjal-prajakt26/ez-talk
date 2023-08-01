@@ -1,4 +1,4 @@
-export const updateProfileService = async (editInput, setData) => {
+export const updateProfileService = async (editInput, setData, setUser) => {
   try {
     const res = await fetch("/api/users/edit", {
       method: "POST",
@@ -10,7 +10,8 @@ export const updateProfileService = async (editInput, setData) => {
 
     const jsonRes = await res.json();
     if (res.status === 201) {
-      setData({ type: "SET_POSTS", payload: jsonRes.user });
+      setData({ type: "UPDATE_USERLIST", payload: jsonRes.user });
+      setUser(jsonRes.user)
     }
   } catch (err) {
     console.log(err);

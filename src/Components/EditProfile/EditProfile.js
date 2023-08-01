@@ -11,7 +11,7 @@ export function EditProfile() {
   const {
     data: {  users }, setData} = useContext(DataContext);
     const { user, setUser } = useContext(AuthContext);
-    const currUser= users.find(({_id})=>_id===user._id)
+    // const currUser= users.find(({_id})=>_id===user._id)
     const [isAvatarClick, setIsAvatarClick]=useState(false);
 const [profileData, setProfileData]= useState(user);
   const {
@@ -34,7 +34,7 @@ const [profileData, setProfileData]= useState(user);
 
   const imageUploadHandler = (e) => {
     const imageUrl = URL.createObjectURL(e.target.files[0]);
-    setProfileData((postdata) => ({ ...postdata, mediaURL: imageUrl }));
+    setProfileData((postdata) => ({ ...postdata, avatar: imageUrl }));
   };
   const bgImageUploadHandler = (e) => {
     const imageUrl = URL.createObjectURL(e.target.files[0]);
@@ -57,7 +57,7 @@ const [profileData, setProfileData]= useState(user);
         </div>
         <div class="modal-body">
           <div className="profile-edit-img">
-            <img
+            <input type="image"
               className="header-img"
               src={
                 header
@@ -66,12 +66,12 @@ const [profileData, setProfileData]= useState(user);
               }
             />
             <span type="span" className="bg-img-icon dropdown-icon"><label htmlFor="media-input-mdl-5"><ImagePlus size={32} strokeWidth={2.5} /></label><input
-              key={user.mediaURL}
+              key={user.avatar}
               type="file"
               id="media-input-mdl-5"
               name="media-input-mdl-5"
               className="choose-file"
-              onClick={bgImageUploadHandler}
+              onChange={(e)=>bgImageUploadHandler(e)}
             /></span>
             <img
               className="avatar-img"
@@ -88,7 +88,7 @@ const [profileData, setProfileData]= useState(user);
             <ul class="dropdown-menu">
                 <span className="dropdown-item" onClick={()=>setIsAvatarClick(true)}>Set Avatar</span>
                 <span className="dropdown-item"><label htmlFor="media-input-mdl-4">Upload Image</label> <input
-              key={user.mediaURL}
+              key={user.avatar}
               type="file"
               id="media-input-mdl-4"
               name="media-input-mdl-4"
@@ -105,7 +105,7 @@ const [profileData, setProfileData]= useState(user);
               <div className="avatar-list-conatiner">
               {
                 profileImages.map((obj)=>(
-                    <SelectAvatar avatar={obj} setIsAvatarClick={setIsAvatarClick}/>
+                    <SelectAvatar avatar={obj} setIsAvatarClick={setIsAvatarClick} setProfileData={setProfileData}/>
                 ))
               }</div>
               <button
@@ -140,19 +140,6 @@ const [profileData, setProfileData]= useState(user);
                 placeholder="Last Name"
                 value={lastName}
                 onChange={(e)=>setProfileData((data)=>({...data, lastName:e.target.value}))}
-              />
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput3" class="form-label">
-                Username
-              </label>
-              <input
-                type="text"
-                class="form-control"
-                id="exampleFormControlInput3"
-                placeholder="Username"
-                value={username}
-                onChange={(e)=>setProfileData((data)=>({...data, username:e.target.value}))}
               />
             </div>
             <div class="mb-3">
@@ -208,7 +195,7 @@ const [profileData, setProfileData]= useState(user);
             data-bs-dismiss="modal" onClick={()=>updateProfileService({
           ...user,
           ...profileData,
-        },setData)}> 
+        },setData, setUser)}> 
             Save changes
           </button>
         </div>
