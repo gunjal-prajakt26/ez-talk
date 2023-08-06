@@ -29,7 +29,7 @@ export const EditPostModal = (props) => {
   };
 
   return ReactDOM.createPortal(
-    <>
+    <div className="editmodal">
     <div className="edittweet-overlay"></div>
       <div className="modal-content-1 edittweet-modal">
         <div className="new-post-modal">
@@ -84,6 +84,6 @@ export const EditPostModal = (props) => {
         <button type="button" class="btn-close" onClick={()=>setEditModal(false)}></button>
         </div>
       </div>
-      </>, document.getElementById("portal")
+      </div>, document.getElementById("portal")
   );
 };

@@ -22,7 +22,8 @@ const [inputData, setInputData]=useState({username:"",password:""})
   }
   return (
     <div className="login-container">
-      <p class="header-title login-header"> <Instagram size={36} color="#0277bd" strokeWidth={2.25} />{" "}i-Gram</p>
+      <p class="header-title login-header"> <Instagram size={36} color="#0277bd" strokeWidth={2.25} />{" "}ez-talk</p>
+      <h4 className="login-title">Sign In</h4>
       <div class="login-form-1">
         <div class="form-group">
           <input

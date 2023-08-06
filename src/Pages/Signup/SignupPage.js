@@ -36,7 +36,7 @@ export function SignupPage() {
   return (
     <div className="login-container">
       <p class="header-title login-header">
-        <Instagram color="#0277bd" size={36} strokeWidth={2.25} /> i-Gram
+        <Instagram color="#0277bd" size={36} strokeWidth={2.25} /> ez-talk
       </p>
       <h3 className="login-title">SignUp</h3>
       <div class="container login-form-1">

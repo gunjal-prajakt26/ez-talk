@@ -4,6 +4,10 @@
     font-family: 'Courgette', cursive;
     margin-left: 2em;
 }
+.header-link {
+    text-decoration: none;
+    color: black;
+}
 
 .header-container{
     border-bottom: 1px solid;
@@ -36,4 +40,5 @@
     min-width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
+    top: 4rem;
 }

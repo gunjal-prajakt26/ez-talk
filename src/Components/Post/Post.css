@@ -101,23 +101,23 @@
 
 .edittweet-modal {
     position: fixed;
-    /* z-index: 50; */
-    top: 60%;
+    z-index: 1;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
     padding: 0.8rem;
     border-radius: 10px;
     display: flex;
-    max-height: 70vh;
-    /* width: 40rem; */
+    width: 30rem;
     overflow: auto;
+    max-height: 98vh;
+    padding: 1em;
 }
-
-
 
 .edittweet-overlay {
     position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
     right: 0;

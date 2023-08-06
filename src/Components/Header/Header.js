@@ -1,5 +1,6 @@
 import { Instagram, Search } from "lucide-react";
 import { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { DataContext } from "../../Context/DataContext";
 import { SuggestionCard } from "../SuggestionCard/SuggestionCard";
 import "./Header.css";
@@ -26,7 +27,10 @@ export function Header() {
     <div className="header-container">
       <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
-          <p class="header-title"><Instagram color="#0277bd" size={36} strokeWidth={2.25} />{" "}i-Gram</p>
+        <NavLink
+          to="/"
+          className="header-link"
+        ><p class="header-title"><Instagram color="#0277bd" size={36} strokeWidth={2.25} />{" "}ez-talk</p></NavLink>
           {/* <form class="d-flex" role="search"> */}
           <div className="search-container">
           <span className="search-icon"><Search size={30} strokeWidth={2.5} /></span>
