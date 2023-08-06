@@ -21,7 +21,7 @@ const {
   isLoad,
   isError,
 } = useContext(DataContext);
-const { user, setUser } = useContext(AuthContext);
+const { user, setUser,logOutHandler } = useContext(AuthContext);
   const getUser =
     user._id == id ? { ...user } : users.find((obj) => obj._id == id);
   const {
@@ -88,7 +88,7 @@ const { user, setUser } = useContext(AuthContext);
               </span>
               <ul class="dropdown-menu">
                 <span className="dropdown-item" type="" data-bs-toggle="modal" data-bs-target="#exampleModal-profile">Edit</span>
-                <span className="dropdown-item">Logout</span>
+                <span className="dropdown-item" onClick={()=>logOutHandler()}>Logout</span>
               </ul>
             </div>
           ) : (

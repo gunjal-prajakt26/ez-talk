@@ -10,7 +10,7 @@ export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const localStorageToken = JSON.parse(localStorage.getItem("login"));
-  const [token, setToken] = useState(localStorageToken?.token);
+  const [token, setToken] = useState("");
   const localStorageUser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState([]);
   const [isLogin, setIsLogin] = useState(false);
@@ -60,6 +60,14 @@ export function AuthProvider({ children }) {
       toast.error("SignUp Failed");
     }
   };
+  const logOutHandler=()=>{
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setToken("");
+    setUser({})
+    setIsLogin(false)
+    toast.success("You're logged out!");
+  }
 
   const abc = {
     _id: "01",
@@ -110,7 +118,7 @@ export function AuthProvider({ children }) {
   return (
     <>
       <AuthContext.Provider
-        value={{ token, user, setUser, loginUser, signupAuthUser,isLogin }}
+        value={{ token, user, setUser, loginUser, signupAuthUser,isLogin ,logOutHandler}}
       >
         {children}
       </AuthContext.Provider>
