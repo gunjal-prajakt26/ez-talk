@@ -42,15 +42,22 @@ export function AuthProvider({ children }) {
 
   const signupAuthUser = async (signupData) => {
     try {
-      const {
-        data: { createdUser, encodedToken },
-        status,
-      } = await axios.post("/api/auth/signup", { ...signupData });
-      if (status === 201) {
-        localStorage.setItem("token", JSON.stringify({ token: encodedToken }));
-        setToken(encodedToken);
-        localStorage.setItem("user", JSON.stringify({ user: createdUser }));
-        setUser(createdUser);
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        body: JSON.stringify({
+          firstName: signupData.firstName,
+          lastName: signupData.lastName,
+          username: signupData.username,
+          password: signupData.userPassword,
+        }),
+      });
+      const jsonRes = await res.json();
+      console.log(jsonRes);
+      if (res.status === 201) {
+        localStorage.setItem("token", JSON.stringify({ token: jsonRes.encodedToken }));
+        setToken(jsonRes.encodedToken);
+        localStorage.setItem("user", JSON.stringify({ user: jsonRes.createdUser }));
+        setUser(jsonRes.createdUser);
         setIsLogin(true);
         navigate("/");
         toast.success("SignUp Successfully");
@@ -60,6 +67,7 @@ export function AuthProvider({ children }) {
       toast.error("SignUp Failed");
     }
   };
+
   const logOutHandler=()=>{
     localStorage.removeItem("user");
     localStorage.removeItem("token");

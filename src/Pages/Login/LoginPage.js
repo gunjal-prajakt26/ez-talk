@@ -11,7 +11,8 @@ const [inputData, setInputData]=useState({username:"",password:""})
   const {setIsLoad}= useContext(DataContext);
 
   const loginHandler=()=>{
-    loginUser(inputData)
+    loginUser({username: inputData.username,
+    password: inputData.password})
     setIsLoad(true);
   }
 
