@@ -14,7 +14,6 @@ export const createPost = async (token, post, user, setData) => {
         },
         { headers: { authorization: token } }
       );
-      console.log({ response });
       if (response.status === 201) {
         setData({ type: "SET_POSTS", payload: response.data.posts });
       toast.success("Post Created");
@@ -34,7 +33,6 @@ export const createPost = async (token, post, user, setData) => {
           headers: { authorization: token },
         }
       );
-      console.log(response.data.posts);
       if (response.status === 201) {
         setData({ type: "SET_POSTS", payload: response.data.posts });
       toast.success("Post Edited");

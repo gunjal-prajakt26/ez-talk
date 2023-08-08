@@ -8,7 +8,6 @@ import { Avtar } from "../Avtar/Avtar";
 
 export const EditPostModal = (props) => {
   const {editingPostId,setEditModal} = props;
-  console.log(editingPostId)
   const {
     data: { allPosts },
     setData

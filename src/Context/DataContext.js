@@ -18,7 +18,6 @@ export function DataProvider({ children }) {
   const [data, setData] = useReducer(dispatch, initialValue);
   const { user, token } = useContext(AuthContext);
 
-  // console.log(data.allPosts);
   return (
     <>
       <DataContext.Provider value={{ data, setData, isLoad, isError,setIsLoad, setIsError}}>

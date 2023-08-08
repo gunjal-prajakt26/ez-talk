@@ -52,7 +52,6 @@ export function AuthProvider({ children }) {
         }),
       });
       const jsonRes = await res.json();
-      console.log(jsonRes);
       if (res.status === 201) {
         localStorage.setItem("token", JSON.stringify({ token: jsonRes.encodedToken }));
         setToken(jsonRes.encodedToken);
