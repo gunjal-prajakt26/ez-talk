@@ -35,3 +35,19 @@
     cursor: pointer;
     background-color: var(--primary-color);
 }
+
+.show-pswd {
+    /* margin: auto; */
+    top: -2em;
+    left: 10.2em;
+    margin-bottom: -1em;
+    z-index: 50;
+    overflow: hidden;
+    position: relative;
+    padding: 0.3em;
+    background-color: white;
+}
+
+.pswd-input {
+    margin-bottom: -1.5em;
+}

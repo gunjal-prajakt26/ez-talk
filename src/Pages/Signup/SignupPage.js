@@ -1,4 +1,4 @@
-import { Instagram } from "lucide-react";
+import { Eye, EyeOff, Instagram } from "lucide-react";
 import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthConetxt";
@@ -13,6 +13,7 @@ export function SignupPage() {
   const [userSignupData, setUserSignupData] = useState(data);
   const [error, setError] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isShow, setIsShow]= useState(false);
 
   const { signupAuthUser } = useContext(AuthContext);
 
@@ -87,9 +88,9 @@ export function SignupPage() {
               required
             />
           </div>
-          <div class="form-group">
+          <div class="form-group pswd-input">
             <input
-              type="password"
+            type={!isShow?"password":"text"}
               class="form-control"
               placeholder="Your Password *"
               value={userSignupData.password}
@@ -101,6 +102,7 @@ export function SignupPage() {
               }
               required
             />
+          <span className="show-pswd" onClick={()=>setIsShow((isShow)=>!isShow)}>{!isShow?<Eye />:<EyeOff />}</span>
           </div>
           <div class="form-group">
             <input

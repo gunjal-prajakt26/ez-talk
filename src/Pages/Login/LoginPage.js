@@ -1,4 +1,4 @@
-import { Instagram } from "lucide-react";
+import { Eye, EyeOff, Instagram } from "lucide-react";
 import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthConetxt";
@@ -9,6 +9,7 @@ export function LoginPage() {
 const [inputData, setInputData]=useState({username:"",password:""})
   const {loginUser} = useContext(AuthContext);
   const {setIsLoad}= useContext(DataContext);
+  const [isShow, setIsShow]= useState(false);
 
   const loginHandler=()=>{
     loginUser({username: inputData.username,
@@ -36,12 +37,13 @@ const [inputData, setInputData]=useState({username:"",password:""})
         </div>
         <div class="form-group">
           <input
-            type="password"
+            type={!isShow?"password":"text"}
             class="form-control"
             value={inputData.password}
             placeholder="Your Password *"
             onChange={(e)=>setInputData((inputData)=>({...inputData, password:e.target.value}))}
           />
+          <span className="show-pswd" onClick={()=>setIsShow((isShow)=>!isShow)}>{!isShow?<Eye />:<EyeOff />}</span>
         </div>
         <div class="form-group">
         <button className="btnSubmit" onClick={()=>loginHandler()}>Login</button>
