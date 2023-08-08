@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+
 export const addToBookmark = async (id, setData) => {
   try {
     const response = await fetch(`/api/users/bookmark/${id}`, {
